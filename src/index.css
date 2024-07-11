@@ -1,0 +1,66 @@
+/* * :root {
+  
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F4F4F4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  width: 100%;
+}
+
+main {
+  padding: 120px 40px 40px;
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #F4F4F4;
+}
+
+.logo {
+  width: 50px;
+}
+
+nav .container-fluid {
+  margin: 10px 60px;
+  padding: 0;
+}
+
+.nav-links {
+  gap: 60px;
+}
+
+a.nav-link {
+  text-align: right;
+  font-size: 25px;
+  padding: 0px !important;
+  gap: 40px;
+}
+
+/* Hero Section */
+.hero {
+  /* background-color: red; */
+  height: 100vh;
+}
+
+/* Tablet devices */
+@media (max-width: 768px) {
+}
+
+/* Mobile devices */
+@media (max-width: 576px) {
+}
