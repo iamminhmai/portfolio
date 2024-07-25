@@ -1,5 +1,0 @@
-favicon: 
-- colors: #F4F4F4 and #5C5C5C
-- font family: Montserrat
-- font size: 90px
-- font variant: extra-bold 800 normal
