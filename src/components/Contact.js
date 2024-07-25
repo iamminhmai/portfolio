@@ -1,8 +1,16 @@
 export default function Contact() {
     return (
-        <section id="contact">
-            <h1>CONTACT</h1>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <section id="contact" className="contact">
+            <h2>Contact<span className="dot">.</span></h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel suscipit arcu. Mauris molestie fermentum ullamcorper. Praesent ullamcorper suscipit neque. Donec varius mollis purus, vel molestie felis mollis at. Praesent tempus tempor vestibulum. Vestibulum ultrices libero ut nulla laoreet, at posuere nunc vehicula. Sed ornare quis elit quis consequat. Etiam aliquam rhoncus rutrum. Curabitur ac nisl nulla. Pellentesque dapibus non nibh ut congue.
+
+Sed velit lacus, congue at dapibus sed, bibendum eu justo. Nunc tincidunt viverra ipsum, sit amet rutrum dolor vehicula sit amet. Etiam ac tempor sapien, quis suscipit velit. Praesent a elementum nisl. Donec sem orci, faucibus vel massa et, accumsan molestie tortor. Aliquam quis odio nec leo consectetur sollicitudin eu non ipsum. Nam tristique massa lorem, sit amet faucibus mauris placerat sit amet. Donec viverra consequat elit, quis molestie nulla venenatis sit amet. Nullam nec diam vitae ex molestie viverra eget nec diam. Fusce eu neque in justo mattis suscipit. Vivamus magna tortor, commodo vel nulla sit amet, eleifend sollicitudin erat. Fusce eu sapien erat. Aenean a dolor ut lacus mollis venenatis. Suspendisse ut consequat neque. Proin eu turpis vel turpis sodales ultricies. Nam quam lacus, tincidunt non tempor vitae, euismod et lectus.
+
+Fusce eleifend nisl risus, ut imperdiet quam viverra dictum. Praesent commodo quis dolor suscipit pharetra. Fusce mattis massa quis nunc tincidunt, non porta arcu venenatis. Curabitur eleifend enim volutpat massa auctor, suscipit congue odio mollis. Nulla vestibulum vel velit et pharetra. Fusce facilisis, nibh non venenatis facilisis, nisi diam scelerisque risus, eget eleifend lacus est quis metus. Cras lacinia, nisi id egestas auctor, ex purus vestibulum lectus, eget mollis lacus turpis id massa. Maecenas nec massa enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+Mauris quis mattis tellus. Quisque vel libero ut nisl semper fermentum. Integer porta laoreet libero sed vehicula. Integer augue ipsum, dignissim eget lacus quis, congue varius diam. Maecenas vel ante faucibus odio vestibulum tristique ac consequat mauris. In pellentesque gravida nulla id eleifend. Aliquam id aliquet neque. Morbi gravida fermentum elit sed commodo. Aliquam finibus, ligula ac convallis condimentum, velit erat suscipit eros, ac dignissim lectus felis eu sem. Ut eleifend eu nulla malesuada laoreet.
+
+Proin viverra tellus dolor, nec condimentum quam pretium at. Sed pellentesque sagittis venenatis. Ut efficitur nunc nisl, vitae tempor ante suscipit nec. Praesent fermentum felis vitae ipsum varius bibendum. Maecenas fermentum volutpat rutrum. Etiam congue efficitur augue, ac rutrum est scelerisque non. Mauris volutpat ullamcorper ex. Mauris velit libero, blandit a congue eu, aliquet vitae arcu. Nulla ac feugiat ante. In euismod nulla ex, non dapibus quam gravida in. Phasellus in leo vel eros pharetra facilisis. Pellentesque varius mollis risus ac molestie. Ut vulputate maximus ligula. Etiam ultricies interdum magna efficitur molestie.</p>
         </section>
     )
 }
