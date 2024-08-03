@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.997a67c8.css",
-    "main.js": "/portfolio/static/js/main.52798bf9.js",
-    "static/media/seattle.png": "/portfolio/static/media/seattle.55417bd47c179f0a046e.png",
+    "main.css": "/portfolio/static/css/main.2757e2ec.css",
+    "main.js": "/portfolio/static/js/main.40f95554.js",
     "static/media/Satoshi-VariableItalic.ttf": "/portfolio/static/media/Satoshi-VariableItalic.9519fea9567e2405bc08.ttf",
     "static/media/Satoshi-Variable.ttf": "/portfolio/static/media/Satoshi-Variable.536fda9b164542087fc7.ttf",
     "static/media/Satoshi-MediumItalic.ttf": "/portfolio/static/media/Satoshi-MediumItalic.5db9ec801a311bdf187b.ttf",
@@ -40,11 +39,11 @@
     "static/media/Satoshi-LightItalic.woff2": "/portfolio/static/media/Satoshi-LightItalic.540a6dd2e29f70e15477.woff2",
     "static/media/Satoshi-Light.woff2": "/portfolio/static/media/Satoshi-Light.df8f06167ee6fd05a131.woff2",
     "index.html": "/portfolio/index.html",
-    "main.997a67c8.css.map": "/portfolio/static/css/main.997a67c8.css.map",
-    "main.52798bf9.js.map": "/portfolio/static/js/main.52798bf9.js.map"
+    "main.2757e2ec.css.map": "/portfolio/static/css/main.2757e2ec.css.map",
+    "main.40f95554.js.map": "/portfolio/static/js/main.40f95554.js.map"
   },
   "entrypoints": [
-    "static/css/main.997a67c8.css",
-    "static/js/main.52798bf9.js"
+    "static/css/main.2757e2ec.css",
+    "static/js/main.40f95554.js"
   ]
 }
