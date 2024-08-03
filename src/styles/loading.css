@@ -14,7 +14,7 @@
 }
 
 .loading-mask.inactive {
-    transform: translateY(100%); /* Slides down when inactive */
+    transform: translateY(150%); /* Slides down when inactive */
 }
 
 .percentage-container {

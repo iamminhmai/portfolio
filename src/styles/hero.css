@@ -448,10 +448,6 @@
     .hero p {
         font-size: 40px;
     }
-    
-    .hero .scroll-container {
-        bottom: 10%;
-    }
 
     @keyframes typing-medium {
         0% { width: 0; }
@@ -495,3 +491,10 @@
         100% { width: 320px; }
     }
 }
+
+@media only screen and (max-device-width: 430px) and (orientation: portrait) {
+    .hero .scroll-container {
+        bottom: 12%;
+    }
+}
+
