@@ -1,16 +1,195 @@
+import { useState, useRef, useEffect } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
+import '../styles/contact.css';
+
+const SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
 export default function Contact() {
+    const formRef = useRef();
+    const reCAPTCHARef = useRef(null);
+    const [loading, setLoading] = useState(false);
+    const [reCAPTCHA, setReCAPTCHA] = useState(null);
+    const [validated, setValidated] = useState(false);
+    const contactRef = useRef(null); // Reference to the about section
+
+    useEffect(() => {
+        const sectionRef = contactRef.current;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    const titleElement = entry.target.querySelector('.contact-title');
+                    const contentElement = entry.target.querySelector(".contact-container-mask");
+
+                    // Calculate the ratio and determine the appropriate action
+                    if (entry.intersectionRatio >= 0.6) {
+                        contentElement.classList.add("slide-to-right");
+                    } else if (entry.intersectionRatio < 0.6) {
+                        contentElement.classList.remove("slide-to-right");
+                    }
+
+                    if (entry.intersectionRatio >= 0.2) {
+                        titleElement.classList.add('animated');
+                        titleElement.classList.remove('animated-out');
+                    } else if (entry.intersectionRatio < 0.2) {
+                        titleElement.classList.remove('animated');
+                        titleElement.classList.add('animated-out');
+                    }
+                });
+            },
+            {
+                threshold: [0.2, 0.6]
+            }
+        );
+
+        if (sectionRef) {
+            observer.observe(sectionRef);
+        }
+
+        return () => {
+            if (sectionRef) {
+                observer.unobserve(sectionRef);
+            }
+        };
+    }, []);
+    
+    const sendEmail = async () => {
+        setLoading(true);
+        try {
+            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, { publicKey: PUBLIC_KEY });
+            formRef.current.reset();
+            setValidated(false);
+            reCAPTCHARef.current.reset();
+            setReCAPTCHA(null);
+            toast.success("Message sent!", { transition: Zoom });
+        } catch (error) {
+            toast.error(`FAILED... ${error.text}. Please send me a message via email instead.`, {
+                autoClose: 5000,
+                pauseOnHover: true,
+                pauseOnFocusLoss: true
+            });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleSubmit = (event) => {
+        const currentForm = event.currentTarget;
+        event.preventDefault();
+        if (currentForm.checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+            if (reCAPTCHA) {
+                sendEmail();
+            } else {
+                toast.error("Please verify the reCAPTCHA!");
+            }
+        }
+        setValidated(true);
+    };
+
     return (
-        <section id="contact" className="contact">
-            <h2>Contact<span className="dot">.</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel suscipit arcu. Mauris molestie fermentum ullamcorper. Praesent ullamcorper suscipit neque. Donec varius mollis purus, vel molestie felis mollis at. Praesent tempus tempor vestibulum. Vestibulum ultrices libero ut nulla laoreet, at posuere nunc vehicula. Sed ornare quis elit quis consequat. Etiam aliquam rhoncus rutrum. Curabitur ac nisl nulla. Pellentesque dapibus non nibh ut congue.
-
-Sed velit lacus, congue at dapibus sed, bibendum eu justo. Nunc tincidunt viverra ipsum, sit amet rutrum dolor vehicula sit amet. Etiam ac tempor sapien, quis suscipit velit. Praesent a elementum nisl. Donec sem orci, faucibus vel massa et, accumsan molestie tortor. Aliquam quis odio nec leo consectetur sollicitudin eu non ipsum. Nam tristique massa lorem, sit amet faucibus mauris placerat sit amet. Donec viverra consequat elit, quis molestie nulla venenatis sit amet. Nullam nec diam vitae ex molestie viverra eget nec diam. Fusce eu neque in justo mattis suscipit. Vivamus magna tortor, commodo vel nulla sit amet, eleifend sollicitudin erat. Fusce eu sapien erat. Aenean a dolor ut lacus mollis venenatis. Suspendisse ut consequat neque. Proin eu turpis vel turpis sodales ultricies. Nam quam lacus, tincidunt non tempor vitae, euismod et lectus.
-
-Fusce eleifend nisl risus, ut imperdiet quam viverra dictum. Praesent commodo quis dolor suscipit pharetra. Fusce mattis massa quis nunc tincidunt, non porta arcu venenatis. Curabitur eleifend enim volutpat massa auctor, suscipit congue odio mollis. Nulla vestibulum vel velit et pharetra. Fusce facilisis, nibh non venenatis facilisis, nisi diam scelerisque risus, eget eleifend lacus est quis metus. Cras lacinia, nisi id egestas auctor, ex purus vestibulum lectus, eget mollis lacus turpis id massa. Maecenas nec massa enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-Mauris quis mattis tellus. Quisque vel libero ut nisl semper fermentum. Integer porta laoreet libero sed vehicula. Integer augue ipsum, dignissim eget lacus quis, congue varius diam. Maecenas vel ante faucibus odio vestibulum tristique ac consequat mauris. In pellentesque gravida nulla id eleifend. Aliquam id aliquet neque. Morbi gravida fermentum elit sed commodo. Aliquam finibus, ligula ac convallis condimentum, velit erat suscipit eros, ac dignissim lectus felis eu sem. Ut eleifend eu nulla malesuada laoreet.
-
-Proin viverra tellus dolor, nec condimentum quam pretium at. Sed pellentesque sagittis venenatis. Ut efficitur nunc nisl, vitae tempor ante suscipit nec. Praesent fermentum felis vitae ipsum varius bibendum. Maecenas fermentum volutpat rutrum. Etiam congue efficitur augue, ac rutrum est scelerisque non. Mauris volutpat ullamcorper ex. Mauris velit libero, blandit a congue eu, aliquet vitae arcu. Nulla ac feugiat ante. In euismod nulla ex, non dapibus quam gravida in. Phasellus in leo vel eros pharetra facilisis. Pellentesque varius mollis risus ac molestie. Ut vulputate maximus ligula. Etiam ultricies interdum magna efficitur molestie.</p>
+        <section ref={contactRef} id="contact" className={`contact ${loading ? "loading-mask" : ""}`}>
+            <ToastContainer 
+                position="top-center"
+                autoClose={2000}
+                limit={2} 
+                pauseOnFocusLoss={false}
+                pauseOnHover={false}
+            />
+            <h2 className="contact-title">Contact<span className="text-dot">.</span></h2>
+            <div className="contact-container">
+                <div className="contact-container-mask"></div>
+                <div className="contact-heading">
+                    <h3>Let's talk!</h3>
+                    <p>What's on your mind?</p>
+                </div>
+                <Form 
+                    ref={formRef} 
+                    noValidate 
+                    validated={validated} 
+                    className="contact-form" 
+                    onSubmit={handleSubmit}
+                >
+                    {loading && (
+                        <i className="fa-solid fa-spinner fa-spin loading-spinner"></i>
+                    )}
+                    <Row>
+                        <Form.Floating className="mb-3" as={Col} lg={6} md={12} sm={12}>
+                            <Form.Control
+                                required
+                                id="nameInput"
+                                type="name"
+                                name="name"
+                                placeholder="Name"
+                                autoComplete="name"
+                            />
+                            <label htmlFor="nameInput"><i className="fa-solid fa-circle-user"></i>Name</label>
+                            <Form.Control.Feedback type="invalid">
+                                Please provide a name.
+                            </Form.Control.Feedback>
+                        </Form.Floating>
+                        <Form.Floating className="mb-3" as={Col} lg={6} md={12} sm={12}>
+                            <Form.Control
+                                required
+                                id="emailInput"
+                                type="email"
+                                name="email"
+                                placeholder="name@example.com"
+                                autoComplete="email"
+                            />
+                            <label htmlFor="emailInput"><i className="fa-solid fa-envelope"></i>Email</label>
+                            <Form.Control.Feedback type="invalid">
+                                Please provide a valid email.
+                            </Form.Control.Feedback>
+                        </Form.Floating>
+                    </Row>
+                    <Form.Floating className="mb-3">
+                        <Form.Control
+                            required
+                            id="subjectInput"
+                            type="text"
+                            name="subject"
+                            placeholder="Subject"
+                        />
+                        <label htmlFor="subjectInput"><i className="fa-solid fa-pen"></i>Subject</label>
+                        <Form.Control.Feedback type="invalid">
+                            Please provide a subject.
+                        </Form.Control.Feedback>
+                    </Form.Floating>
+                    <Form.Floating className="mb-3">
+                        <Form.Control
+                            required
+                            as="textarea"
+                            id="messageInput"
+                            name="message"
+                            placeholder="Message"
+                            style={{ height: "200px" }}
+                        />
+                        <label htmlFor="messageInput"><i className="fa-solid fa-inbox"></i>Message</label>
+                        <Form.Control.Feedback type="invalid">
+                            Please provide a message.
+                        </Form.Control.Feedback>
+                    </Form.Floating>
+                    <p id="recaptcha-label" className="recaptcha-label">Please verify you are not a robot.</p>
+                    <ReCAPTCHA 
+                        sitekey={SITE_KEY} 
+                        className="mb-4 recaptcha" 
+                        aria-describedby="recaptcha-label" 
+                        onChange={setReCAPTCHA}
+                        ref={reCAPTCHARef}
+                    />
+                    <button type="submit" className="contact-button"><span>Send Message<i className="fa-solid fa-arrow-up"></i></span></button>
+                </Form>
+            </div>
         </section>
-    )
-}
+    );
+};

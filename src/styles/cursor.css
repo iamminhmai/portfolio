@@ -1,0 +1,39 @@
+#cursor-container {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#inner-circle {
+    width: 8px;
+    height: 8px;
+    background-color: #0F1B61;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#outer-circle {
+    width: 30px;
+    height: 30px;
+    background-color: #6276e5;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    transition: transform 0.3s ease;
+}
+
+#inner-circle.hover-effect {
+    opacity: 0;
+}
+
+#outer-circle.hover-effect {
+    transform: translate(-50%, -50%) scale(2);
+    background-color: #AADCEC;
+    opacity: 0.4;
+}

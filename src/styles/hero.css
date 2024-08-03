@@ -1,25 +1,42 @@
-/* Hero Section */
+/* Hero section */
 .hero {
-    height: calc(100vh - 150px);
+    height: 100vh;
     scroll-margin-top: 150px;
-    margin: 150px 100px 0px;
+    padding: 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    position: relative;
 }
 
 .hero h1 {
     font-size: 80px;
-    color: var(--text-color);
+    display: inline-block;
+    overflow: hidden;
+    border-right: 6px solid var(--subtext-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    padding-right: 5px;
+    animation: 
+        typing 2.5s steps(40, end) 3s,
+        blink-caret 0.75s step-end infinite;
+    -webkit-animation: 
+        typing 2.5s steps(40, end) 3s,
+        blink-caret 0.75s step-end infinite;
 }
 
 .hero p {
     font-size: 50px;
-    width: 60%;
     margin-bottom: 90px;
-    color: var(--text-color);
+    animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.5s both;
+    -webkit-animation: slide-in-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.5s both;
 }
 
-.button-container {
+.hero-button-container {
     display: flex;
-
+    gap: 20px;
 }
   
 .hero button {
@@ -28,13 +45,18 @@
     border: none;
     border-radius: 50px;
     position: relative;
-    transition: background-color 0.2s ease;
+    overflow: hidden;
+    animation: slide-in-fwd-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.5s both;
+    -webkit-animation: slide-in-fwd-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.5s both;
 }
 
-.resume-button {
-    margin-right: 20px;
+.hero button:hover {
+    cursor: none;
+}
+
+.hero .resume-button {
     background-color: var(--text-color);
-    color: #F4F4F4;
+    color: var(--bg);
 }
 
 .hero .blog-button {
@@ -42,22 +64,20 @@
     background-color: transparent;
     color: var(--text-color);
     border: 1px solid var(--text-color);
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
   
 .hero button span {
     position: relative;
     display: block;
-    transition: transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    transition: transform 0.3s ease;
 }
 
-.hero button:hover {
-    opacity: 0.8;
+.hero button span i {
+    margin-left: 5px;
+    transform: rotate(45deg);
 }
-  
+
 .hero button:hover span {
     transform: translateY(-3px);
 }
@@ -65,47 +85,409 @@
 .hero button:active span {
     transform: translateY(0px);
 }
-  
-.fade-in {
-    animation: fade-in 2.5s ease-out both;
-    -webkit-animation: fade-in 2.5s ease-out both;
+
+.hero .resume-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--subtext-color);
+    animation: slide-out 0.3s ease-in-out;
+    -webkit-animation: slide-out 0.3s ease-in-out;
+}
+
+.hero .resume-button:hover::before {
+    animation: slide-in 0.3s ease-in-out;
+    -webkit-animation: slide-in 0.3s ease-in-out;
+}
+
+.hero .blog-button:hover {
+    color: var(--bg);
+    background-color: var(--text-color);    
+}
+
+.hero .scroll-container {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    width: 82px;
+    margin-left: -41px; /* Half width */
+    color: #919795;
+    font-size: 12px;
+    text-transform: uppercase;
+    animation: bounce-in-bottom 1s 7s both;
+    -webkit-animation: bounce-in-bottom 1s 7s both;
 }
   
-.fade-in-background {
-    animation: fade-in-background 2.5s ease-out both;
-    -webkit-animation: fade-in-background 2.5s ease-out both;
+.hero .scroll-text span {
+    margin: 0 3px;
+    display: inline-block;
+    animation: scroll-wobbling 7.7s ease-in-out infinite;
+    -webkit-animation: scroll-wobbling 7.7s ease-in-out infinite;
 }
 
-/* Use with React Button
-/* .hero button:hover:active {
-    background-color: black;
-} */
+.hero .scroll-text span:first-child {
+    animation-delay: 0.0725s;
+}
 
-/* Animation */
+.hero .scroll-text span:nth-child(2) {
+    animation-delay: 0.145s;
+}
 
-/* Text title */
-@keyframes fade-in {
+.hero .scroll-text span:nth-child(3) {
+    animation-delay: 0.2175s;
+}
+
+.hero .scroll-text span:nth-child(4) {
+    animation-delay: 0.29s;
+}
+
+.hero .scroll-text span:nth-child(5) {
+    animation-delay: 0.625s;
+}
+
+.hero .scroll-text span:last-child {
+    animation-delay: 0.435s;
+}
+
+.hero .scroll-icon {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    height: 24px;
+    width: 14px;
+    border: 1.5px solid #919795;
+    border-radius: 12px;
+}
+
+.hero .scroll-icon-dot {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    background-color: #919795;
+    height: 4px;
+    width: 4px;
+    margin-left: -2px;
+    border-radius: 50%;
+    animation: scroll-up-down 1.8s ease-in-out infinite;
+    -webkit-animation: scroll-up-down 1.8s ease-in-out infinite;
+}
+
+/* ANIMATION */
+
+/* Hero title typewriter effect */
+@keyframes typing {
+    0% { width: 0; }
+    100% { width: 660px; }
+}
+
+@-webkit-keyframes typing {
+    0% { width: 0; }
+    100% { width: 660px; }
+}
+
+@keyframes blink-caret {
+    0%, 100% { border-color: transparent }
+    50% { border-color: var(--subtext-color); }
+}
+
+@-webkit-keyframes blink-caret {
+    0%, 100% { border-color: transparent }
+    50% { border-color: var(--subtext-color); }
+}
+
+/* Hero subtitle on page loading */
+@keyframes slide-in-left {
     0% {
-        transform: scale(0.9);
+        transform: translateX(1000px);
+        -webkit-transform: translateX(1000px);
         opacity: 0;
     }
     100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-  
-@-webkit-keyframes fade-in {
-    0% {
-        transform: scale(0.95);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
         opacity: 1;
     }
 }
 
-  
-  
-  
+@-webkit-keyframes slide-in-left {
+    0% {
+        transform: translateX(1000px);
+        -webkit-transform: translateX(1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Hero button on page loading */
+@keyframes slide-in-fwd-bottom {
+    0% {
+        transform: translateZ(-1400px) translateY(800px);
+        -webkit-transform: translateZ(-1400px) translateY(800px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateZ(0) translateY(0);
+        -webkit-transform: translateZ(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slide-in-fwd-bottom {
+    0% {
+        transform: translateZ(-1400px) translateY(800px);
+        -webkit-transform: translateZ(-1400px) translateY(800px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateZ(0) translateY(0);
+        -webkit-transform: translateZ(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Button hover */
+@keyframes slide-in {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@-webkit-keyframes slide-in {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes slide-out {
+    0% { left: 100%; }
+    100% { left: -100%; }
+}
+
+@-webkit-keyframes slide-out {
+    0% { left: 100%; }
+    100% { left: -100%; }
+}
+
+/* Scroll */
+@keyframes scroll-wobbling {
+    0%, 10% {
+        transform: none;
+        opacity: 1;
+        color: #919795;
+    }
+    1%, 8% {
+        transform: translateY(-2px);
+        color: #AADCEC;
+    }
+    
+    4% {
+        transform: translateY(3px);
+        opacity: 1;
+        color: #919795;
+    }
+}
+
+@-webkit-keyframes scroll-wobbling {
+    0%, 10% {
+        transform: none;
+        opacity: 1;
+        color: #919795;
+    }
+    1%, 8% {
+        transform: translateY(-2px);
+        color: #AADCEC;
+    }
+    
+    4% {
+        transform: translateY(3px);
+        opacity: 1;
+        color: #919795;
+    }
+}
+
+@keyframes bounce-in-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(500px);
+        -webkit-transform: translateY(500px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    38% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+    55% {
+        transform: translateY(65px);
+        -webkit-transform: translateY(65px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    72% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+    81% {
+        transform: translateY(28px);
+        -webkit-transform: translateY(28px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    90% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+    95% {
+        transform: translateY(8px);
+        -webkit-transform: translateY(8px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+@-webkit-keyframes bounce-in-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(500px);
+        -webkit-transform: translateY(500px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    38% {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+    55% {
+        transform: translateY(65px);
+        -webkit-transform: translateY(65px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    72% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+    81% {
+        transform: translateY(28px);
+        -webkit-transform: translateY(28px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    90% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+    95% {
+        transform: translateY(8px);
+        -webkit-transform: translateY(8px);
+        animation-timing-function: ease-in;
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        animation-timing-function: ease-out;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+/* Scroll dot */
+@keyframes scroll-up-down {
+    0%, 100% { transform: translateY(0.2em); }
+    50% { transform: translateY(1.2em); }
+}
+
+@-webkit-keyframes scroll-up-down {
+    0%, 100% { transform: translateY(0.2em); }
+    50% { transform: translateY(1.2em); }
+}
+ 
+
+/* MEDIA QUERIES */
+
+@media (max-width: 992px) {
+    .hero {
+        padding: 80px 30px;
+    }
+    
+    .hero h1 {
+        font-size: 60px;
+        animation-name: typing-tablets;
+    }
+
+    .hero p {
+        font-size: 40px;
+    }
+
+    @keyframes typing-tablets {
+        0% { width: 0; }
+        100% { width: 550px; }
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 80px 0;
+        width: 85%;
+    }
+
+    .hero h1 {
+        width: 330px;
+        font-size: 38px;
+        padding-right: 2px;
+        animation-name: typing-small;
+    }
+
+    .hero p {
+        font-size: 28px;
+    }
+
+    .hero .hero-button-container {
+        flex-direction: column;
+    }
+
+    .hero .blog-button {
+        display: block;
+        display: none;
+    }
+
+    @keyframes typing-small {
+        0% { width: 0; }
+        100% { width: 320px; }
+    }
+
+    @-webkit-keyframes typing-small {
+        0% { width: 0; }
+        100% { width: 320px; }
+    }
+}

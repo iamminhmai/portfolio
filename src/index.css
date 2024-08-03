@@ -1,137 +1,144 @@
 :root {
-  --bg: #F0F2F3;
-  --text-color: #0F1B61; 
-  --subtext-color: #73BBC5;
-  --font-family: "Satoshi-Medium", sans-serif;
-  --font-size: 18px;
+    --bg: #F4F9FC;
+    --text-color: #0F1B61; 
+    --subtext-color: #73BBC5;
+    --line-color: #7f00e0;
+    --font-family: "Satoshi-Medium", sans-serif;
+    --font-size: 18px;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--subtext-color) #FFFFFF;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFFFFF;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--subtext-color);
+    border-radius: 6px;
+    border: 3px solid #FFFFFF;
+}
+
+html::before {
+    left: 0;
+}
+
+html::after {
+    right: 0;
+}
+
+html::before,
+html::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    backface-visibility: hidden;
+    height: 100%;
+    width: 20px;
+    background: #FFFFFF;
+    z-index: 99999;
 }
 
 body {
-  background-color: #F4F9FC;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: var(--font-family);
-  font-size: var(--font-size);
-  color: var(--text-color);
-  width: 100%;
+    background-color: var(--bg);
+    /* background-color: #1c1d25; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--text-color);
 }
 
-.App {
-  position: relative;
-  overflow: hidden;
+body::before {
+    top: 0;
 }
 
-.background-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh; 
-  /* background: #F4F9FC; */
-  background: url('./assets/img/seattle.png') no-repeat center center/cover;
-  z-index: -1; 
-  opacity: 0.2;
+body::after {
+    bottom: 0;
 }
 
-/* Styles for the cursor light effect */
-#cursor-light {
-  display: none;
-  position: fixed;
-  pointer-events: none; /* Allows clicks to pass through */
-  width: 350px;
-  height: 300px;
-  margin-top: -150px; /* Offset to center the circle */
-  margin-left: -175px;
-  border-radius: 50% / 25%;
-  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
-  transition: transform 0.1s ease; /* Smooth transition for movement */
-  transform: translate(-50%, -50%); /* Initial state off screen */
-  z-index: 9999;
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    backface-visibility: hidden;
+    height: 20px;
+    width: 100%;
+    background: #FFFFFF;
+    z-index: 99999;
 }
 
-.dot {
-  color: var(--subtext-color);
+.text-dot {
+    color: var(--subtext-color);
 }
 
 h2 {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 50px;
 }
 
 h2::after {
-  content: "";
-  position: relative;
-  display: block;
-  height: 3px;
-  width: 80px;
-  bottom: -20px;
-  left: 0;
-  background: var(--subtext-color);
-  margin-bottom: 50px;
+    content: "";
+    position: relative;
+    display: block;
+    height: 3px;
+    width: 80px;
+    bottom: -20px;
+    left: 0;
+    background: var(--subtext-color);
 }
 
-#projects, #contact {
-  scroll-margin-top: 80px;
-  background-color: #F4F9FC;
-  width: 100%;
-  padding: 50px 100px 0px 100px;
-}
-
-#projects p, #contact p, footer p {
-  margin: 0;
-}
-
-/* Footer */
-footer {
-  background-color: var(--bg);
-}
-
-footer p {
-  color: var(--text-color);
+.about, .projects, .contact {
+    scroll-margin-top: 100px;
+    background-color: var(--bg);
+    width: 80%;
+    margin: auto;
 }
 
 /* Tablet devices */
 @media (max-width: 992px) {
-  .hero h1 {
-    width: 100%;
-    font-size: 50px;
-  }
+    .about, .projects {
+        padding: 30px 40px;
+    }
 }
 
 /* Mobile devices */
 @media (max-width: 576px) {
-  .hero h1 {
-    font-size: 25px;
-  }
-}
+    html::before, html::after,
+    body::before, body::after {
+        width: 10px;
+    }
 
-/* Animation */
+    h2 {
+        font-size: 30px;
+    }
 
-/* Background image */
-@keyframes fade-in-background {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.4;
-  }
-}
-@-webkit-keyframes fade-in-background {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.4;
-  }
+    .about, .projects {
+        padding: 20px 0;
+        width: 85%;
+    }
+
+    .contact {
+        width: 85%;
+    }
+
 }

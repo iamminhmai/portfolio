@@ -1,0 +1,247 @@
+.contact {
+    padding: 50px 100px 100px;
+    position: relative;
+}
+
+@keyframes slide-out-top-title {
+    0% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-30px);
+        -webkit-transform: translateY(-30px);
+        opacity: 0;
+    }
+  }
+
+@keyframes slide-in-top-title {
+    0% {
+        transform: translateY(-50px);
+        -webkit-transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.contact-title {
+    opacity: 0; 
+}
+
+.contact-title.animated {
+    animation: slide-in-top-title 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.contact-title.animated-out {
+    animation: slide-out-top-title 0.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 50px 0;
+    position: relative;
+    transition: transform 0.5s ease;
+    overflow: hidden;
+    padding-top: 4px;
+}
+
+.contact .contact-container-mask {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(15,27,97);
+    background: linear-gradient(90deg, rgba(15,27,97,1) 0%, rgba(37,59,190,1) 100%);
+    z-index: 3;
+    transition: transform 0.5s ease;
+}
+
+.contact .contact-container-mask.slide-to-right {
+    transform: translateX(110%);
+}
+
+.contact h2 {
+    margin-bottom: 46px;
+}
+
+.contact-heading h3 {
+    font-size: 24px;
+}
+
+.contact-heading p {
+    font-size: 16px;
+}
+
+.contact .contact-form {
+    position: relative;
+}
+
+.contact::after {
+    display: none;
+    content: "";
+    background-color: #F4F4F4;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 1001;
+    opacity: 0.4;
+}
+
+.contact.loading-mask::after {
+    display: block;
+}
+
+.contact .loading-spinner {
+    position: absolute;
+    z-index: 1002;
+    top: 36%;
+    left: 46%;
+    font-size: 60px;
+    color: var(--subtext-color);
+}
+
+.contact-form .form-floating label {
+    left: auto;
+    font-size: 15px;
+    color: var(--text-color);
+}
+
+.contact-form .form-floating label::after {
+    content: "*";
+    margin-left: 3px;
+}
+
+.contact-form .form-floating label i {
+    margin-right: 6px;
+    font-size: 14px;
+}
+
+.contact-form .form-floating input,
+.contact-form .form-floating textarea,
+.contact-form .form-floating input:focus,
+.contact-form .form-floating textarea:focus {
+    color: var(--text-color);
+}
+
+.contact-form .form-floating .invalid-feedback {
+    font-size: 12px;
+}
+
+.contact-form .form-control:focus {
+    border-color: var(--subtext-color);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(115, 187, 197, 0.25);
+}
+
+.contact-form .form-control:hover {
+    border-color: var(--subtext-color);
+}
+
+.contact .recaptcha-label {
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 8px;
+}
+
+.contact .contact-button {
+    color: #F4F4F4;
+    background-color: var(--text-color);
+    font-size: 16px;
+    width: 170px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.contact .contact-button:hover {
+    cursor: none;
+}
+
+.contact .contact-button span {
+    display: block;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.contact .contact-button span i {
+    margin-left: 5px;
+    transform: rotate(45deg);
+}
+
+.contact .contact-button:hover span {
+    transform: translateY(-3px);
+}
+
+.contact .contact-button:active span {
+    transform: translateY(0px);
+}
+
+.contact .contact-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--subtext-color);
+    animation: slide-out 0.3s ease-in-out forwards;
+    -webkit-animation: slide-out 0.3s ease-in-out;
+}
+
+.contact .contact-button:hover::before {
+    animation: slide-in 0.3s ease-in-out forwards;
+    -webkit-animation: slide-in 0.3s ease-in-out;
+}
+
+@keyframes slide-in {
+    from { left: -100%; }
+    to { left: 100%; }
+}
+
+@keyframes slide-out {
+    from { left: 100%; }
+    to { left: -100%; }
+}
+
+
+.Toastify__toast-container {
+    top: 10%;
+    z-index: 99999;
+}
+
+.Toastify__toast {
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+@media (max-width: 992px) {
+    .contact {
+        padding: 30px 40px 40px;
+    }
+
+    .contact .contact-container {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact {
+        padding: 20px 0 40px;
+        width: 85%;
+    }
+
+}

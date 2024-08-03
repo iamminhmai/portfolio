@@ -1,0 +1,35 @@
+.loading-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #AADCEC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: transform 0.5s ease-in-out; /* Smooth transition for sliding */
+    transform: translateY(0);
+}
+
+.loading-mask.inactive {
+    transform: translateY(100%); /* Slides down when inactive */
+}
+
+.percentage-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-150%);
+    font-size: 2em;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+.percentage-digit {
+    text-align: right;
+    margin-right: 2px;
+    width: 65px;
+    position: relative;
+}
