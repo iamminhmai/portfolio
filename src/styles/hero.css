@@ -442,14 +442,18 @@
     
     .hero h1 {
         font-size: 60px;
-        animation-name: typing-tablets;
+        animation-name: typing-medium, blink-caret;
     }
 
     .hero p {
         font-size: 40px;
     }
+    
+    .hero .scroll-container {
+        bottom: 10%;
+    }
 
-    @keyframes typing-tablets {
+    @keyframes typing-medium {
         0% { width: 0; }
         100% { width: 550px; }
     }
@@ -465,7 +469,7 @@
         width: 330px;
         font-size: 38px;
         padding-right: 2px;
-        animation-name: typing-small;
+        animation-name: typing-small, blink-caret;
     }
 
     .hero p {
