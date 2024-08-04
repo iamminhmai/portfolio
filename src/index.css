@@ -60,6 +60,8 @@ body {
     /* background-color: #1c1d25; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    backdrop-filter: blur(0);   
+    -webkit-backdrop-filter: blur(0);
     font-family: var(--font-family);
     font-size: var(--font-size);
     color: var(--text-color);
@@ -123,9 +125,12 @@ h2::after {
 
 /* Mobile devices */
 @media (max-width: 576px) {
-    html::before, html::after,
-    body::before, body::after {
+    html::before, html::after {
         width: 10px;
+    }
+
+    body::before, body::after {
+        height: 10px;
     }
 
     h2 {

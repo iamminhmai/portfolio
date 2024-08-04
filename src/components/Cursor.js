@@ -7,10 +7,10 @@ export default function Cursor() {
     useEffect(() => {
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        if (isTouchDevice) {
-            // If it's a touch device, don't initialize the custom cursor effects
-            return;
-        }
+        // if (isTouchDevice) {
+        //     // If it's a touch device, don't initialize the custom cursor effects
+        //     return;
+        // }
         
         const cursorContainer = document.getElementById('cursor-container');
         const outerCircle = document.getElementById('outer-circle');

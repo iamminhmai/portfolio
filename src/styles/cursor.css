@@ -33,7 +33,7 @@
 }
 
 #outer-circle.hover-effect {
-    transform: translate(-50%, -50%) scale(2.5);
+    transform: translate(-50%, -50%) scale(2);
     background-color: #AADCEC;
     opacity: 0.4;
 }

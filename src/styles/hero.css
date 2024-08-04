@@ -451,7 +451,7 @@
 
     @keyframes typing-medium {
         0% { width: 0; }
-        100% { width: 550px; }
+        100% { width: 555px; }
     }
 }
 
@@ -465,6 +465,7 @@
         width: 330px;
         font-size: 38px;
         padding-right: 2px;
+        border-right-width: 4px;
         animation-name: typing-small, blink-caret;
     }
 

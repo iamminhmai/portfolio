@@ -60,11 +60,14 @@ a.nav-link:nth-of-type(3) {
     font-weight: bold;
     letter-spacing: 4px;
     padding: 5px 0;
+    /* padding-right: -4px; */
     color: var(--text-color);
     /* color: var(--bg); */
     position: relative;
     transition: scale 0.5s ease;
 }
+
+
 
 .navbar-nav a.nav-link:hover,
 .navbar-nav a.nav-link.active {
@@ -74,9 +77,9 @@ a.nav-link:nth-of-type(3) {
 a.nav-link::after {
     content: "";
     position: absolute;
-    left: 50%;
+    left: calc(50% - 2px);      /* half of letter-spacing */
     bottom: 0;
-    width: 60%;
+    width: calc(65% - 4px);     /* letter-spacing */
     height: 3px;
     background: var(--subtext-color);
     transform: translateX(-50%) scaleX(0);
