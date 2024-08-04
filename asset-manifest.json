@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.d92c2956.css",
+    "main.css": "/portfolio/static/css/main.3450e34d.css",
     "main.js": "/portfolio/static/js/main.0b5d6a70.js",
     "static/media/Satoshi-VariableItalic.ttf": "/portfolio/static/media/Satoshi-VariableItalic.9519fea9567e2405bc08.ttf",
     "static/media/Satoshi-Variable.ttf": "/portfolio/static/media/Satoshi-Variable.536fda9b164542087fc7.ttf",
@@ -39,11 +39,11 @@
     "static/media/Satoshi-LightItalic.woff2": "/portfolio/static/media/Satoshi-LightItalic.540a6dd2e29f70e15477.woff2",
     "static/media/Satoshi-Light.woff2": "/portfolio/static/media/Satoshi-Light.df8f06167ee6fd05a131.woff2",
     "index.html": "/portfolio/index.html",
-    "main.d92c2956.css.map": "/portfolio/static/css/main.d92c2956.css.map",
+    "main.3450e34d.css.map": "/portfolio/static/css/main.3450e34d.css.map",
     "main.0b5d6a70.js.map": "/portfolio/static/js/main.0b5d6a70.js.map"
   },
   "entrypoints": [
-    "static/css/main.d92c2956.css",
+    "static/css/main.3450e34d.css",
     "static/js/main.0b5d6a70.js"
   ]
 }
