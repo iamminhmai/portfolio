@@ -33,6 +33,7 @@
 .navbar .hamburger-menu {
     background-color: transparent;
     border: none;
+    /* border: 1px solid var(--subtext-color); */
     padding: 0;
 }
 
@@ -51,7 +52,7 @@
 
 .navbar .hamburger-menu .line {
     transition: 0.5s;
-    stroke-dasharray: 60 31 60 300;
+    stroke-dasharray: 58 34 58 300;
 }
 
 .navbar .hamburger-menu[aria-expanded="true"] .line {
