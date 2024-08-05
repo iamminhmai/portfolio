@@ -18,7 +18,6 @@ html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--subtext-color) #FFFFFF;
-    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -58,11 +57,12 @@ html::after {
 body {
     background-color: var(--bg);
     /* background-color: #1c1d25; */
-    /* -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: var(--font-family);
     font-size: var(--font-size);
     color: var(--text-color);
+    /* filter: blur(1px); */
 }
 
 body::before {
@@ -83,6 +83,15 @@ body::after {
     width: 100%;
     background: #FFFFFF;
     z-index: 99999;
+}
+
+main, footer {
+    transition: filter 0.5s ease;
+}
+
+main.blurred-content,
+footer.blurred-content {
+    filter: blur(1.5px);
 }
 
 .text-dot {
