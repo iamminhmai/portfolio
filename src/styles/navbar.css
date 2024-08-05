@@ -56,7 +56,7 @@
 }
 
 .navbar .hamburger-menu[aria-expanded="true"] .line {
-    stroke-dasharray: 60 105 60 300;
+    stroke-dasharray: 58 108 58 300;
     stroke-dashoffset: -90;
 }
   
