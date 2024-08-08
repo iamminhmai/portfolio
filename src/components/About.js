@@ -1,8 +1,8 @@
 import '../styles/about.css';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
-export default function About() {
-    const aboutRef = useRef(null); // Reference to the about section
+export default function About(props) {
+    const aboutRef = props.aboutRef; // Reference to the about section
 
     useEffect(() => {
         const sectionRef = aboutRef.current;

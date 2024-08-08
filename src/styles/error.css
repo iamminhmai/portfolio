@@ -1,0 +1,183 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 100vh;
+    gap: 10px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.error-container .error-404 {
+    font-size: 100px;
+}
+
+.error-container i {
+    margin: 0 3px;
+}
+
+.error-container h2::after {
+    content: "";
+    position: relative;
+    display: block;
+    height: 5px;
+    width: 150px;
+    bottom: -25px;
+    left: 50%;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    background: var(--subtext-color);
+}
+
+.error-container p {
+    margin-bottom: 20px;
+    white-space: break-spaces;
+}
+
+.error-container a {
+    color: #F4F4F4;
+    background-color: var(--text-color);
+    font-size: 16px;
+    width: 170px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    color: var(--bg);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: wobble-hor-bottom 4s 3.2s infinite both;
+    -webkit-animation: wobble-hor-bottom 4s 3.2s infinite both;
+}
+
+.error-container a:hover {
+    cursor: none;
+}
+
+.error-container a span {
+    display: block;
+    transition: transform 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.error-container a span i {
+    margin-left: 5px;
+    transform: rotate(45deg);
+}
+
+.error-container a:hover span {
+    transform: translateY(-3px);
+}
+
+.error-container a:active span {
+    transform: translateY(0px);
+}
+
+.error-container a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--subtext-color);
+    animation: slide-out 0.3s ease-in-out forwards;
+    -webkit-animation: slide-out 0.3s ease-in-out;
+}
+
+.error-container a:hover::before {
+    animation: slide-in 0.3s ease-in-out forwards;
+    -webkit-animation: slide-in 0.3s ease-in-out;
+}
+
+/* ANIMATION */
+
+/* Button hover sliding */
+@keyframes slide-in {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@-webkit-keyframes slide-in {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes slide-out {
+    0% { left: 100%; }
+    100% { left: -100%; }
+}
+
+@-webkit-keyframes slide-out {
+    0% { left: 100%; }
+    100% { left: -100%; }
+}
+
+/* Button attention */
+/* Delay in between each animation by having the animation last from 0% to 18% then nothing until 100% */
+@keyframes wobble-hor-bottom {
+    0%, 18%, 100% {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        transform-origin: 50% 50%;
+        -webkit-transform-origin: 50% 50%;
+    }
+    3% {
+        transform: translateX(-30px) rotate(-6deg);
+        -webkit-transform: translateX(-30px) rotate(-6deg);
+    }
+    6% {
+        transform: translateX(15px) rotate(6deg);
+        -webkit-transform: translateX(15px) rotate(6deg);
+    }
+    9% {
+        transform: translateX(-15px) rotate(-3.6deg);
+        -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    }
+    12% {
+        transform: translateX(9px) rotate(2.4deg);
+        -webkit-transform: translateX(9px) rotate(2.4deg);
+    }
+    15% {
+        transform: translateX(-6px) rotate(-1.2deg);
+        -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    }
+}
+
+@-webkit-keyframes wobble-hor-bottom {
+    0%, 18%, 100% {
+        transform: translateX(0%);
+        -webkit-transform: translateX(0%);
+        transform-origin: 50% 50%;
+        -webkit-transform-origin: 50% 50%;
+    }
+    3% {
+        transform: translateX(-30px) rotate(-6deg);
+        -webkit-transform: translateX(-30px) rotate(-6deg);
+    }
+    6% {
+        transform: translateX(15px) rotate(6deg);
+        -webkit-transform: translateX(15px) rotate(6deg);
+    }
+    9% {
+        transform: translateX(-15px) rotate(-3.6deg);
+        -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    }
+    12% {
+        transform: translateX(9px) rotate(2.4deg);
+        -webkit-transform: translateX(9px) rotate(2.4deg);
+    }
+    15% {
+        transform: translateX(-6px) rotate(-1.2deg);
+        -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    }
+}

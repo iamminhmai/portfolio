@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import '../styles/hero.css';
 
-export default function Hero() {
+export default function Hero(props) {
+    const heroRef = props.heroRef;
+
     useEffect(() => {
         const h1 = document.querySelector(".hero h1");
         h1.style.width = "max-content";
@@ -11,7 +13,7 @@ export default function Hero() {
         // Start the animation with JavaScript by setting the width
         setTimeout(() => {
             h1.style.width = `${contentWidth}px`; // Set width to start the animation
-        }, 3000); // Delay to simulate your original delay
+        }, 2800); // Delay to simulate your original delay
     }, []);
 
     const openResume = () => {
@@ -20,7 +22,7 @@ export default function Hero() {
     };
 
     return (
-        <section id="hero" className="hero">
+        <section ref={heroRef} id="hero" className="hero">
             <div className="hero-title-container">
                 <h1>Hi, I am <strong>Minh Mai</strong><span className="text-dot">.</span></h1>
                 <p>Frontend Developer</p>

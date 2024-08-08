@@ -51,7 +51,7 @@ footer svg:hover {
 }
 
 .instagram-icon:hover {
-    fill: url(#instagram-gradient);
+    fill: url(#instagram-linear-gradient);
 }
 
 .facebook-icon:hover {
@@ -67,35 +67,32 @@ footer svg:hover {
     right: 0;
     bottom: 0;
     z-index: 1000;
-    /* writing-mode: vertical-rl; */
-    /* transform: rotate(180deg) scale(-1); */
-    /* text-orientation: sideways-right; */
 }
 
 .copyright {
     color: var(--text-color);
     font-size: 12px;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg) scale(-1);
-    text-orientation: sideways-right;
-    margin-right: calc(10vw / 2);
-    margin-bottom: 20px;
+    transform: rotate(90deg);
+    transform-origin: top right;
+    margin-right: 5vw;
     display: flex;
     align-items: center;
     gap: 15px;
+    height: fit-content;
 }
 
 .copyright::after {
     content: "";
-    height: 80px;
-    width: 1.5px;
-    display: inline-block;
+    height: 1.5px;
+    width: 80px;
+    display: block;
     background: var(--text-color);
 }
 
 .copyright span {
-    margin-top: -8px;
-    margin-bottom: 4px;
+    /* margin-top: -8px;
+    margin-bottom: 4px; */
+    margin-left: -8px;
     transform: scale(1.4);
 }
 
@@ -148,6 +145,6 @@ footer svg:hover {
 
     footer .copyright span {
         margin: 0;
-        transform: scale(1.6);
+        transform: scale(1.5);
     }
 }

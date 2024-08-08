@@ -20,7 +20,7 @@
 .percentage-container {
     position: absolute;
     top: 50%;
-    transform: translateY(-150%);
+    transform: translateY(-100%);
     font-size: 2em;
     color: var(--text-color);
     display: flex;

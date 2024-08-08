@@ -1,8 +1,9 @@
 import '../styles/projects.css';
 
-export default function Projects() {
+export default function Projects(props) {
+    const projectsRef = props.projectsRef;
     return (
-        <section id="projects" className="projects">
+        <section ref={projectsRef} id="projects" className="projects">
             <h2>Projects<span className="text-dot">.</span></h2>
             
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel suscipit arcu. Mauris molestie fermentum ullamcorper. Praesent ullamcorper suscipit neque. Donec varius mollis purus, vel molestie felis mollis at. Praesent tempus tempor vestibulum. Vestibulum ultrices libero ut nulla laoreet, at posuere nunc vehicula. Sed ornare quis elit quis consequat. Etiam aliquam rhoncus rutrum. Curabitur ac nisl nulla. Pellentesque dapibus non nibh ut congue.</p>

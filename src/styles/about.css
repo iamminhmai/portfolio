@@ -139,6 +139,10 @@
     .about .about-container {
         gap: 10px;
     }
+
+    .about .about-container-mask {
+        display: none;
+    }
     
     .about .skills-container svg {
         height: 60px;

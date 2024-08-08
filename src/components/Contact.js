@@ -13,13 +13,13 @@ const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-export default function Contact() {
-    const formRef = useRef();
+export default function Contact(props) {
+    const contactRef = props.contactRef;
+    const contactFormRef = useRef();
     const reCAPTCHARef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [reCAPTCHA, setReCAPTCHA] = useState(null);
     const [validated, setValidated] = useState(false);
-    const contactRef = useRef(null); // Reference to the about section
 
     useEffect(() => {
         const sectionRef = contactRef.current;
@@ -64,14 +64,14 @@ export default function Contact() {
     const sendEmail = async () => {
         setLoading(true);
         try {
-            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, { publicKey: PUBLIC_KEY });
-            formRef.current.reset();
+            await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, contactFormRef.current, { publicKey: PUBLIC_KEY });
+            contactFormRef.current.reset();
             setValidated(false);
             reCAPTCHARef.current.reset();
             setReCAPTCHA(null);
-            toast.success("Message sent!", { transition: Zoom });
+            toast.success("Your message has been sent!", { transition: Zoom });
         } catch (error) {
-            toast.error(`FAILED... ${error.text}. Please send me a message via email instead.`, {
+            toast.error(`FAILED... ${error.text}. Please send me a message via email.`, {
                 autoClose: 5000,
                 pauseOnHover: true,
                 pauseOnFocusLoss: true
@@ -113,7 +113,7 @@ export default function Contact() {
                     <p>What's on your mind?</p>
                 </div>
                 <Form 
-                    ref={formRef} 
+                    ref={contactFormRef} 
                     noValidate 
                     validated={validated} 
                     className="contact-form" 

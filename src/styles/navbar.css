@@ -25,7 +25,7 @@
     animation: rotate-center 0.6s ease-in-out both;
 }
 
-.navbar a.navbar-brand {
+.navbar a:has(.navbar-brand) {
     animation: slide-in-top 1.5s ease-out 1.7s both;
     -webkit-animation: slide-in-top 1.5s ease-out 1.7s both;
 }
@@ -33,7 +33,6 @@
 .navbar .hamburger-menu {
     background-color: transparent;
     border: none;
-    /* border: 1px solid var(--subtext-color); */
     padding: 0;
 }
 
@@ -43,6 +42,8 @@
 
 .navbar .hamburger-menu .hamburger {
     transition: translate 0.5s, rotate 0.5s;
+    animation: slide-in-top 1.5s ease-out 2s both;
+    -webkit-animation: slide-in-top 1.5s ease-out 2s both;
 }
 
 .navbar .hamburger-menu[aria-expanded="true"] .hamburger {
@@ -51,12 +52,12 @@
 }
 
 .navbar .hamburger-menu .line {
-    transition: 0.5s;
-    stroke-dasharray: 58 34 58 300;
+    transition: 0.5s ease;
+    stroke-dasharray: 59 32 59 300;
 }
 
 .navbar .hamburger-menu[aria-expanded="true"] .line {
-    stroke-dasharray: 58 108 58 300;
+    stroke-dasharray: 59 106 59 300;
     stroke-dashoffset: -90;
 }
   
@@ -87,6 +88,7 @@ a.nav-link:nth-of-type(3) {
     padding: 5px 0;
     color: var(--text-color);
     position: relative;
+    transform: translate(0);
     transition: scale 0.5s ease;
 }
 
@@ -153,10 +155,12 @@ a.nav-link:hover::after {
     0% {
         transform: rotate(0);
         -webkit-transform: rotate(0);
+        scale: 1;
     }
     100% {
         transform: rotate(360deg);
         -webkit-transform: rotate(360deg);
+        scale: 1.1;
     }
 }
 
@@ -182,25 +186,38 @@ a.nav-link:hover::after {
         opacity: 1;
     }
 
+    .navbar .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 25%;
+        height: 100vh;
+        cursor: pointer; 
+        z-index: 999;
+    }
+
     .navbar .nav-links.navbar-nav {
         position: fixed;
         inset: 10px 10px 10px 25%;
         background: rgb(170,220,236);
         background: linear-gradient(135deg, rgba(170,220,236,1) 0%, rgba(222,234,238,1) 100%);
-        height: 100vh;
+        height: calc(100vh - 10px);
         display: flex;
-        align-items: flex-start;
+        align-items: flex-end;
+        justify-content: flex-start;
         z-index: -1;
         gap: 25px;
+        padding: 70px 30px;
     }
 
-    .navbar a.nav-link {
+    .navbar .navbar-nav a.nav-link {
         animation: none;
-        margin: 0 auto;
+        font-size: 16px;
     }
+    
 
     .navbar a.nav-link:first-child {
-        margin-top: 200px;
+        margin-top: 30px;
     }
 
     .navbar .nav-links.navbar-nav[aria-expanded="true"] {
@@ -213,11 +230,24 @@ a.nav-link:hover::after {
 
     .navbar .social-media {
         display: flex;
-        gap: 20px;
+        flex-grow: 1;
+        gap: 18px;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
         width: 100%;
-        margin-top: 75px;
+    }
+
+    .navbar .nav-links.navbar-nav svg {
+        transition: transform 0.5s ease;
+        margin: 2px 0;
+    }
+    
+    .navbar .nav-links.navbar-nav svg:hover {
+        transform: scale(1.2) translateY(-4px); 
+    }
+
+    .instagram-icon:hover {
+        fill: url(#instagram-gradient);
     }
 
     @keyframes navbar-slide-in {

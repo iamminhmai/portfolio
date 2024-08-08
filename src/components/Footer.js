@@ -17,7 +17,7 @@ export default function Footer() {
                     </a>
                     <a href="https://www.instagram.com/iamminhmai/" aria-label="Instagram" target="_blank" rel="noreferrer">
                         <svg viewBox="0 0 24 24" className="instagram-icon" fill="#0F1B61" height="25px" width="25px">
-                            <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <linearGradient id="instagram-linear-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" style={{stopColor:"#833AB4", stopOpacity:"1"}} />
                                 <stop offset="20%" style={{stopColor:"#FD1D1D", stopOpacity:"1"}} />
                                 <stop offset="40%" style={{stopColor:"#F56040", stopOpacity:"1"}} />
@@ -41,7 +41,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="copyright-container">
-			    <p className="copyright">&copy; 2024 Minh Mai. Made with lots of<span>&#x2615;</span></p>
+			    <p className="copyright mb-0">&copy; 2024 Minh Mai. Made with lots of<span>&#x2615;</span></p>
             </div>
         </footer>
     )

@@ -9,6 +9,7 @@
     width: 80%;
     margin: auto;
     position: relative;
+    overflow: hidden;
 }
 
 .hero h1 {
@@ -20,10 +21,10 @@
     margin: 0 auto;
     padding-right: 5px;
     animation: 
-        typing 2.5s steps(40, end) 3s,
+        typing 2.5s steps(40, end) 2.8s,
         blink-caret 0.75s step-end infinite;
     -webkit-animation: 
-        typing 2.5s steps(40, end) 3s,
+        typing 2.5s steps(40, end) 2.8s,
         blink-caret 0.75s step-end infinite;
 }
 
@@ -482,6 +483,11 @@
         display: none;
     }
 
+    .hero .scroll-container {
+        bottom: 4%;
+        bottom: calc(4% + env(safe-area-inset-bottom));
+    }
+
     @keyframes typing-small {
         0% { width: 0; }
         100% { width: 320px; }
@@ -493,9 +499,9 @@
     }
 }
 
-@media only screen and (max-device-width: 430px) and (orientation: portrait) {
+/* @media only screen and (max-device-width: 430px) and (orientation: portrait) {
     .hero .scroll-container {
         bottom: 12%;
     }
-}
+} */
 

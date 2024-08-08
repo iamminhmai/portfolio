@@ -3,27 +3,39 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import '../styles/navbar.css';
 import logo from '../assets/img/logo.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const heroRef = props.heroRef;
+    const aboutRef = props.aboutRef;
+    const projectsRef = props.projectsRef;
+    const contactRef = props.contactRef;
+
+    const handleNavLinkClick = (event, ref) => {
+        event.preventDefault(); // Prevent the default anchor behavior
+        setIsExpanded(false);  // Collapse the navbar in mobile view if expanded
+        ref.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     const handleToggle = (expanded) => {
         setIsExpanded(expanded);
     };
 
-    const handleNavLinkClick = () => {
-        setIsExpanded(false)
-    };
+
+    const handleOverlayClick = () => {
+        setIsExpanded(false);
+    }
 
     useEffect(() => {
         if (isExpanded) {
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflowY = 'hidden'; 
             document.querySelector('main').classList.add("blurred-content");
             document.querySelector('footer').classList.add("blurred-content");
             document.querySelector('.navbar').classList.add('navbar-expanded');
         } else {
-            document.body.style.overflow = 'auto'; 
+            document.body.style.overflowY = 'auto'; 
             document.querySelector('main').classList.remove("blurred-content");
             document.querySelector('footer').classList.remove("blurred-content");
             document.querySelector('.navbar').classList.remove('navbar-expanded');
@@ -32,8 +44,13 @@ export default function NavBar() {
 
     return (
         <Navbar expand="sm" className="navbar" fixed="top" expanded={isExpanded} onToggle={handleToggle}>
+            {isExpanded && <div className="overlay" onClick={handleOverlayClick}></div>}
             <Container fluid>
-                <Navbar.Brand href="#hero"><img alt="Logo" src={logo} className="logo"/></Navbar.Brand>
+                <NavLink to="#hero" onClick={(e) => handleNavLinkClick(e, heroRef)}>
+                    <Navbar.Brand>
+                        <img alt="Logo" src={logo} className="logo"/>
+                    </Navbar.Brand>
+                </NavLink>
                 <Navbar.Toggle 
                     className="hamburger-menu" 
                     aria-controls="primary-nav"
@@ -51,9 +68,10 @@ export default function NavBar() {
                 </Navbar.Toggle>
                 <Navbar.Collapse id="primary-nav" className="justify-content-end">
                     <Nav className="nav-links" aria-expanded={isExpanded}>
-                        <Nav.Link href="#about" onClick={handleNavLinkClick}>About</Nav.Link>
-                        <Nav.Link href="#projects" onClick={handleNavLinkClick}>Projects</Nav.Link>
-                        <Nav.Link href="#contact" onClick={handleNavLinkClick}>Contact</Nav.Link>
+                        <NavLink to="#about" onClick={(e) => handleNavLinkClick(e, aboutRef)} className="nav-link">About</NavLink>
+                        <NavLink to="#projects" onClick={(e) => handleNavLinkClick(e, projectsRef)} className="nav-link">Projects</NavLink>
+                        <NavLink to="#contact" onClick={(e) => handleNavLinkClick(e, contactRef)} className="nav-link">Contact</NavLink>
+     
                         <div className="social-media">
                             <a href="https://github.com/iamminhmai" aria-label="GitHub" target="_blank" rel="noreferrer">
                                 <svg viewBox="0 0 128 128" className="github-icon" fill="#0F1B61" height="25px" width="25px">
@@ -66,18 +84,18 @@ export default function NavBar() {
                                 </svg>
                             </a>
                             <a href="https://www.instagram.com/iamminhmai/" aria-label="Instagram" target="_blank" rel="noreferrer">
-                                <svg viewBox="0 0 24 24" className="instagram-icon" fill="#0F1B61" height="25px" width="25px">
-                                    <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style={{stopColor:"#833AB4", stopOpacity:"1"}} />
-                                        <stop offset="20%" style={{stopColor:"#FD1D1D", stopOpacity:"1"}} />
-                                        <stop offset="40%" style={{stopColor:"#F56040", stopOpacity:"1"}} />
-                                        <stop offset="60%" style={{stopColor:"#F77737", stopOpacity:"1"}} />
-                                        <stop offset="80%" style={{stopColor:"#FCAF45", stopOpacity:"1"}} />
-                                        <stop offset="100%" style={{stopColor:"#FFDC80", stopOpacity:"1"}} />
-                                    </linearGradient>
-                                    <path d="M17.34,5.46h0a1.2,1.2,0,1,0,1.2,1.2A1.2,1.2,0,0,0,17.34,5.46Zm4.6,2.42a7.59,7.59,0,0,0-.46-2.43,4.94,4.94,0,0,0-1.16-1.77,4.7,4.7,0,0,0-1.77-1.15,7.3,7.3,0,0,0-2.43-.47C15.06,2,14.72,2,12,2s-3.06,0-4.12.06a7.3,7.3,0,0,0-2.43.47A4.78,4.78,0,0,0,3.68,3.68,4.7,4.7,0,0,0,2.53,5.45a7.3,7.3,0,0,0-.47,2.43C2,8.94,2,9.28,2,12s0,3.06.06,4.12a7.3,7.3,0,0,0,.47,2.43,4.7,4.7,0,0,0,1.15,1.77,4.78,4.78,0,0,0,1.77,1.15,7.3,7.3,0,0,0,2.43.47C8.94,22,9.28,22,12,22s3.06,0,4.12-.06a7.3,7.3,0,0,0,2.43-.47,4.7,4.7,0,0,0,1.77-1.15,4.85,4.85,0,0,0,1.16-1.77,7.59,7.59,0,0,0,.46-2.43c0-1.06.06-1.4.06-4.12S22,8.94,21.94,7.88ZM20.14,16a5.61,5.61,0,0,1-.34,1.86,3.06,3.06,0,0,1-.75,1.15,3.19,3.19,0,0,1-1.15.75,5.61,5.61,0,0,1-1.86.34c-1,.05-1.37.06-4,.06s-3,0-4-.06A5.73,5.73,0,0,1,6.1,19.8,3.27,3.27,0,0,1,5,19.05a3,3,0,0,1-.74-1.15A5.54,5.54,0,0,1,3.86,16c0-1-.06-1.37-.06-4s0-3,.06-4A5.54,5.54,0,0,1,4.21,6.1,3,3,0,0,1,5,5,3.14,3.14,0,0,1,6.1,4.2,5.73,5.73,0,0,1,8,3.86c1,0,1.37-.06,4-.06s3,0,4,.06a5.61,5.61,0,0,1,1.86.34A3.06,3.06,0,0,1,19.05,5,3.06,3.06,0,0,1,19.8,6.1,5.61,5.61,0,0,1,20.14,8c.05,1,.06,1.37.06,4S20.19,15,20.14,16ZM12,6.87A5.13,5.13,0,1,0,17.14,12,5.12,5.12,0,0,0,12,6.87Zm0,8.46A3.33,3.33,0,1,1,15.33,12,3.33,3.33,0,0,1,12,15.33Z"/>
-                                </svg>
-                            </a>
+                        <svg viewBox="0 0 24 24" className="instagram-icon" fill="#0F1B61" height="25px" width="25px">
+                            <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style={{stopColor:"#833AB4", stopOpacity:"1"}} />
+                                <stop offset="20%" style={{stopColor:"#FD1D1D", stopOpacity:"1"}} />
+                                <stop offset="40%" style={{stopColor:"#F56040", stopOpacity:"1"}} />
+                                <stop offset="60%" style={{stopColor:"#F77737", stopOpacity:"1"}} />
+                                <stop offset="80%" style={{stopColor:"#FCAF45", stopOpacity:"1"}} />
+                                <stop offset="100%" style={{stopColor:"#FFDC80", stopOpacity:"1"}} />
+                            </linearGradient>
+                            <path d="M17.34,5.46h0a1.2,1.2,0,1,0,1.2,1.2A1.2,1.2,0,0,0,17.34,5.46Zm4.6,2.42a7.59,7.59,0,0,0-.46-2.43,4.94,4.94,0,0,0-1.16-1.77,4.7,4.7,0,0,0-1.77-1.15,7.3,7.3,0,0,0-2.43-.47C15.06,2,14.72,2,12,2s-3.06,0-4.12.06a7.3,7.3,0,0,0-2.43.47A4.78,4.78,0,0,0,3.68,3.68,4.7,4.7,0,0,0,2.53,5.45a7.3,7.3,0,0,0-.47,2.43C2,8.94,2,9.28,2,12s0,3.06.06,4.12a7.3,7.3,0,0,0,.47,2.43,4.7,4.7,0,0,0,1.15,1.77,4.78,4.78,0,0,0,1.77,1.15,7.3,7.3,0,0,0,2.43.47C8.94,22,9.28,22,12,22s3.06,0,4.12-.06a7.3,7.3,0,0,0,2.43-.47,4.7,4.7,0,0,0,1.77-1.15,4.85,4.85,0,0,0,1.16-1.77,7.59,7.59,0,0,0,.46-2.43c0-1.06.06-1.4.06-4.12S22,8.94,21.94,7.88ZM20.14,16a5.61,5.61,0,0,1-.34,1.86,3.06,3.06,0,0,1-.75,1.15,3.19,3.19,0,0,1-1.15.75,5.61,5.61,0,0,1-1.86.34c-1,.05-1.37.06-4,.06s-3,0-4-.06A5.73,5.73,0,0,1,6.1,19.8,3.27,3.27,0,0,1,5,19.05a3,3,0,0,1-.74-1.15A5.54,5.54,0,0,1,3.86,16c0-1-.06-1.37-.06-4s0-3,.06-4A5.54,5.54,0,0,1,4.21,6.1,3,3,0,0,1,5,5,3.14,3.14,0,0,1,6.1,4.2,5.73,5.73,0,0,1,8,3.86c1,0,1.37-.06,4-.06s3,0,4,.06a5.61,5.61,0,0,1,1.86.34A3.06,3.06,0,0,1,19.05,5,3.06,3.06,0,0,1,19.8,6.1,5.61,5.61,0,0,1,20.14,8c.05,1,.06,1.37.06,4S20.19,15,20.14,16ZM12,6.87A5.13,5.13,0,1,0,17.14,12,5.12,5.12,0,0,0,12,6.87Zm0,8.46A3.33,3.33,0,1,1,15.33,12,3.33,3.33,0,0,1,12,15.33Z"/>
+                        </svg>
+                    </a>
                             <a href="https://www.facebook.com/profile.php?id=100013694012399" aria-label="Facebook" target="_blank" rel="noreferrer">
                                 <svg viewBox="0 0 16 16" className="facebook-icon" fill="#0F1B61" height="25px" width="25px">
                                     <path d="M15 8a7 7 0 00-7-7 7 7 0 00-1.094 13.915v-4.892H5.13V8h1.777V6.458c0-1.754 1.045-2.724 2.644-2.724.766 0 1.567.137 1.567.137v1.723h-.883c-.87 0-1.14.54-1.14 1.093V8h1.941l-.31 2.023H9.094v4.892A7.001 7.001 0 0015 8z"/><path fill="none" d="M10.725 10.023L11.035 8H9.094V6.687c0-.553.27-1.093 1.14-1.093h.883V3.87s-.801-.137-1.567-.137c-1.6 0-2.644.97-2.644 2.724V8H5.13v2.023h1.777v4.892a7.037 7.037 0 002.188 0v-4.892h1.63z"/>
