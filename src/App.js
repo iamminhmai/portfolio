@@ -24,7 +24,7 @@ export default function App() {
 
     return (
         <div className="App">
-            <Router>
+            <Router basename="/portfolio">
                 <Loading />
                 <Cursor />
                 <header>
@@ -33,7 +33,7 @@ export default function App() {
                 <main>
                     <Routes>
                         <Route index element={ <HomePage heroRef={heroRef} aboutRef={aboutRef} projectsRef={projectsRef} contactRef={contactRef} /> } />
-                        <Route path="/portfolio" element={<Navigate replace to="/" />} />
+                        {/* <Route path="/portfolio" element={<Navigate replace to="/" />} /> */}
                         <Route path="*" element={ <PageNotFound /> } />
                     </Routes>
                 </main>
