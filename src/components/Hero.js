@@ -25,7 +25,7 @@ export default function Hero(props) {
         <section ref={heroRef} id="hero" className="hero">
             <div className="hero-title-container">
                 <h1>Hi, I am <strong>Minh Mai</strong><span className="text-dot">.</span></h1>
-                <p>Frontend Developer</p>
+                <p>Full Stack Developer</p>
             </div>
             <div className="hero-button-container">
                 <button className="resume-button" onClick={openResume}>

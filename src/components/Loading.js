@@ -11,7 +11,7 @@ export default function Loading() {
         let incrementDelay;
 
         if (percentage > 95) {
-            incrementDelay = percentage + 30;   // Adds 30ms to the percentage if above 95
+            incrementDelay = percentage + 20;   // Adds 20ms to the percentage if above 95
         } else if (percentage > 90) {
             incrementDelay = percentage;        // Uses the percentage value if above 90 but 95 or below
         } else {

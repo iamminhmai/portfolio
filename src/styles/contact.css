@@ -60,11 +60,11 @@
     background: rgb(15,27,97);
     background: linear-gradient(90deg, rgba(15,27,97,1) 0%, rgba(37,59,190,1) 100%);
     z-index: 3;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease-in-out;
 }
 
 .contact .contact-container-mask.slide-to-right {
-    transform: translateX(110%);
+    transform: translateX(-110%);
 }
 
 .contact h2 {
@@ -244,6 +244,11 @@
     .contact .contact-container {
         grid-template-columns: 1fr;
         gap: 10px;
+        overflow: visible;
+    }
+
+    .contact .contact-container-mask {
+        display: none;
     }
 
     .contact-form .row div:first-child {
@@ -253,19 +258,11 @@
     .contact-form .row div:last-child {
         padding-left: 12px;
     }
-
-    .contact-form .form-control:focus {
-        box-shadow: none;
-    }
 }
 
 @media (max-width: 576px) {
     .contact {
         padding: 20px 0 40px;
         width: 85%;
-    }
-
-    .contact .contact-container-mask {
-        display: none;
     }
 }

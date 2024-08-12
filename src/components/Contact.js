@@ -30,9 +30,9 @@ export default function Contact(props) {
                     const contentElement = entry.target.querySelector(".contact-container-mask");
 
                     // Calculate the ratio and determine the appropriate action
-                    if (entry.intersectionRatio >= 0.6) {
+                    if (entry.intersectionRatio >= 0.5) {
                         contentElement.classList.add("slide-to-right");
-                    } else if (entry.intersectionRatio < 0.6) {
+                    } else if (entry.intersectionRatio < 0.5) {
                         contentElement.classList.remove("slide-to-right");
                     }
 
@@ -59,7 +59,7 @@ export default function Contact(props) {
                 observer.unobserve(sectionRef);
             }
         };
-    }, []);
+    });
     
     const sendEmail = async () => {
         setLoading(true);

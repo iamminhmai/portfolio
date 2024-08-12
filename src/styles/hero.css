@@ -484,8 +484,8 @@
     }
 
     .hero .scroll-container {
-        bottom: 4%;
-        bottom: calc(4% + env(safe-area-inset-bottom));
+        bottom: 12%;
+        bottom: calc(12% + env(safe-area-inset-bottom));
     }
 
     @keyframes typing-small {

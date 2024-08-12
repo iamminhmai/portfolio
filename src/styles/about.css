@@ -2,36 +2,6 @@
     padding: 50px 100px;
 }
 
-@keyframes slide-out-top-title {
-    0% {
-        transform: translateY(0);
-        -webkit-transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-30px);
-        -webkit-transform: translateY(-30px);
-        opacity: 0;
-    }
-  }
-
-@keyframes slide-in-top-title {
-    0% {
-        transform: translateY(-50px);
-        -webkit-transform: translateY(-50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        -webkit-transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.about-title {
-    opacity: 0; 
-}
-
 .about-title.animated {
     animation: slide-in-top-title 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -61,30 +31,41 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgb(170,220,236);
-    background: linear-gradient(135deg, rgba(170,220,236,1) 0%, rgba(200,220,236,1) 100%);
+    background: rgb(15,27,97);
+    background: linear-gradient(90deg, rgba(15,27,97,1) 0%, rgba(37,59,190,1) 100%);
     z-index: 1;
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease-in-out;
 }
 
 .about .about-container-mask.slide-to-right {
-    transform: translateX(110%);
+    transform: translateX(-110%);
 }
 
-.about .description-container p {
-    margin-bottom: 20px;
+.about .stack-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .about .skills-container {
-    display: flex;
-    gap: 80px;
-    flex-wrap: wrap;
+    overflow: hidden;
+    position: relative;
+    height: 130px;
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1) 15%,
+        rgba(0, 0, 0, 1) 85%,
+        rgba(0, 0, 0, 0)
+    );
 }
 
 .about .skills-container svg {
     height: 80px;
-    animation: floating 5s infinite ease-in-out;
-    -webkit-animation: floating 5s infinite ease-in-out;
+}
+
+.about .skills-container .icon:hover {
+    filter: brightness(1.1);
 }
 
 .about .skills-container .icon {
@@ -92,59 +73,187 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
+    position: absolute;
+    width: 80px;
+    
 }
 
-.about .icon:nth-child(odd) svg {
-    animation-delay: 0s; 
+.about .skills-container .icon .title {
+    font-size: 16px;
+    text-align: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-.about .icon:nth-child(even) svg {
-    animation-delay: 1.5s; 
+.about .skills-container .icon .primary {
+    opacity: 1;
+}
+
+.about .skills-container .icon .secondary {
+    opacity: 0;
+    margin-top: -14px;
+    color: var(--subtext-color);
+    line-height: 1.1;
+}
+
+.about .skills-container .icon:hover .primary {
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.about .skills-container .icon:hover .secondary {
+    transform: translateY(-20px);
+    opacity: 1;
+}
+
+.about .frontend-wrapper .icon {
+    left: max(calc(80px * 5), 100%);
+    animation: scroll-left 30s linear infinite;
+}
+
+.about .backend-wrapper .icon {
+    right: max(calc(80px * 5), 100%);
+    animation: scroll-right 30s linear infinite;
+}
+
+.about .frontend-wrapper .icon:first-child,
+.about .backend-wrapper .icon:first-child {
+    animation-delay: calc(30s / 5 * (5 - 1) * -1);
+}
+  
+.about .frontend-wrapper .icon:nth-child(2),
+.about .backend-wrapper .icon:nth-child(2) {
+    animation-delay: calc(30s / 5 * (5 - 2) * -1);
+}
+
+.about .frontend-wrapper .icon:nth-child(3),
+.about .backend-wrapper .icon:nth-child(3) {
+    animation-delay: calc(30s / 5 * (5 - 3) * -1);
+}
+
+.about .frontend-wrapper .icon:nth-child(4),
+.about .backend-wrapper .icon:nth-child(4) {
+    animation-delay: calc(30s / 5 * (5 - 4) * -1);
+}
+
+.about .frontend-wrapper .icon:last-child,
+.about .backend-wrapper .icon:last-child {
+    animation-delay: calc(30s / 5 * (5 - 5) * -1);
 }
 
 /* ANIMATION */
 
-/* Skills svg */
-@keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 10px); }
-    100%   { transform: translate(0, -0px); }    
+/* Title */
+@keyframes slide-out-top-title {
+    0% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-30px);
+        -webkit-transform: translateY(-30px);
+        opacity: 0;
+    }
+  }
+
+@keyframes slide-in-top-title {
+    0% {
+        transform: translateY(-50px);
+        -webkit-transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-@-webkit-keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 10px); }
-    100%   { transform: translate(0, -0px); }    
+/* Skill icons */
+@keyframes scroll-left {
+    100% { left: -160px; }
+}
+
+@keyframes scroll-right {
+    100% { right: -160px; }
+}
+
+@keyframes scroll-left-small {
+    100% { left: -110px; }
+}
+
+@keyframes scroll-right-small {
+    100% { right: -110px; }
 }
 
 /* MEDIA QUERIES */
 
 @media (max-width: 992px) {
+    .about {
+        padding: 30px 40px;
+    }
+
     .about .about-container {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
-    .about .skills-container {
+    .about .stack-container {
+        margin-top: 10px;
+    }
+
+    .about .frontend-wrapper {
         gap: 40px;
     }
     
-    .about .skills-container svg {
+    .about .frontend-wrapper svg {
         height: 70px;
     }
 }
 
 @media (max-width: 576px) {
+    .about {
+        padding: 20px 0;
+        width: 85%;
+    }
+
     .about .about-container {
         gap: 10px;
     }
 
     .about .about-container-mask {
         display: none;
+    } 
+    
+    .about .stack-container {
+        gap: 10px;
+        margin: 10px 0 20px;
+    }
+
+    .about .skills-container {
+        height: 85px;
+    }
+
+    .about .skills-container .icon {
+        width: 60px;
+    }
+
+    .about .frontend-wrapper .icon {
+        left: max(calc(50px * 5), 100%);
+        animation-name: scroll-left-small;
     }
     
+    .about .backend-wrapper .icon {
+        right: max(calc(50px * 5), 100%);
+        animation-name: scroll-right-small;
+    }
+
     .about .skills-container svg {
-        height: 60px;
+        height: 50px;
+    }
+
+    .about .skills-container .icon .title {
+        font-size: 13px;
     }
 }

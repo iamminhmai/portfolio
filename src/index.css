@@ -117,7 +117,7 @@ h2::after {
 }
 
 .about, .projects, .contact {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 80px;
     background-color: var(--bg);
     width: 80%;
     margin: auto;
