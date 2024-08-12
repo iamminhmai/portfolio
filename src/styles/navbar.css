@@ -27,6 +27,7 @@ nav.navbar {
 }
 
 .navbar a:has(.navbar-brand) {
+    margin-right: 0;
     animation: slide-in-top 1.5s ease-out 1.7s both;
     -webkit-animation: slide-in-top 1.5s ease-out 1.7s both;
 }

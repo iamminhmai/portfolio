@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/hero.css';
 
 export default function Hero(props) {
@@ -16,11 +17,6 @@ export default function Hero(props) {
         }, 2800); // Delay to simulate your original delay
     }, []);
 
-    const openResume = () => {
-        window.open("https://drive.google.com/file/d/1Lh5ctVd1ABZjl8EZBb_NB4yd2tp_UWY4/view?usp=sharing", "_blank");
-        // window.open("/resume.pdf", "_blank");
-    };
-
     return (
         <section ref={heroRef} id="hero" className="hero">
             <div className="hero-title-container">
@@ -28,10 +24,10 @@ export default function Hero(props) {
                 <p>Full Stack Developer</p>
             </div>
             <div className="hero-button-container">
-                <button className="resume-button" onClick={openResume}>
+                <Link className="hero-button resume-button" to="/resume" target="_blank">
                     <span>View Resume<i className="fa-solid fa-arrow-up"></i></span>
-                </button>
-                <button className="blog-button">
+                </Link>
+                <button className="hero-button blog-button">
                     <span>View Blog<i className="fa-solid fa-arrow-up"></i></span>
                 </button>
             </div>

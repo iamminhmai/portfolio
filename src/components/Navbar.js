@@ -2,27 +2,26 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import '../styles/navbar.css';
-import logo from '../assets/img/logo.png';
+import logo from '../assets/files/logo.png';
 import { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export default function NavBar(props) {
     const [isExpanded, setIsExpanded] = useState(false);
-    const heroRef = props.heroRef;
-    const aboutRef = props.aboutRef;
-    const projectsRef = props.projectsRef;
-    const contactRef = props.contactRef;
+    const { heroRef, aboutRef, projectsRef, contactRef } = props;
+    const navigate = useNavigate();
+    const location = useLocation();
+
 
     const handleNavLinkClick = (event, ref) => {
-        event.preventDefault(); // Prevent the default anchor behavior
-        setIsExpanded(false);  // Collapse the navbar in mobile view if expanded
+        event.preventDefault();
+        setIsExpanded(false);
         ref.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const handleToggle = (expanded) => {
         setIsExpanded(expanded);
     };
-
 
     const handleOverlayClick = () => {
         setIsExpanded(false);

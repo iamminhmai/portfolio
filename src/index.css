@@ -18,6 +18,8 @@ html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--subtext-color) #FFFFFF;
+    max-width: 1520px;
+    margin: 0 auto;
 }
 
 ::-webkit-scrollbar {

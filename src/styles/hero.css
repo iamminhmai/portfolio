@@ -40,10 +40,11 @@
     gap: 20px;
 }
   
-.hero button {
+.hero .hero-button {
     width: 200px;
     height: 60px;
     border: none;
+    text-decoration: none;
     border-radius: 50px;
     position: relative;
     overflow: hidden;
@@ -51,7 +52,7 @@
     -webkit-animation: slide-in-fwd-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.5s both;
 }
 
-.hero button:hover {
+.hero .hero-button:hover {
     cursor: none;
 }
 
@@ -68,22 +69,26 @@
     transition: color 0.3s ease, background-color 0.3s ease;
 }
   
-.hero button span {
+.hero .hero-button span {
     position: relative;
     display: block;
     transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.hero button span i {
+.hero .hero-button span i {
     margin-left: 5px;
     transform: rotate(45deg);
 }
 
-.hero button:hover span {
+.hero .hero-button:hover span {
     transform: translateY(-3px);
 }
   
-.hero button:active span {
+.hero .hero-button:active span {
     transform: translateY(0px);
 }
 
