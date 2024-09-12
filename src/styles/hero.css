@@ -62,14 +62,14 @@
 }
 
 .hero .blog-button {
-    display: none;
+    /* display: none; */
     background-color: transparent;
     color: var(--text-color);
     border: 1px solid var(--text-color);
     transition: color 0.3s ease, background-color 0.3s ease;
 }
   
-.hero .hero-button span {
+.hero .hero-button .button-text {
     position: relative;
     display: block;
     transition: transform 0.3s ease;
@@ -79,16 +79,20 @@
     justify-content: center;
 }
 
-.hero .hero-button span i {
+.hero .hero-button .view-text {
+    margin-right: 4px;
+}
+
+.hero .hero-button .button-text i {
     margin-left: 5px;
     transform: rotate(45deg);
 }
 
-.hero .hero-button:hover span {
+.hero .hero-button:hover .button-text {
     transform: translateY(-3px);
 }
   
-.hero .hero-button:active span {
+.hero .hero-button:active .button-text {
     transform: translateY(0px);
 }
 
@@ -108,11 +112,6 @@
 .hero .resume-button:hover::before {
     animation: slide-in 0.3s ease-in-out;
     -webkit-animation: slide-in 0.3s ease-in-out;
-}
-
-.hero .blog-button:hover {
-    color: var(--bg);
-    background-color: var(--text-color);    
 }
 
 .hero .scroll-container {
@@ -469,22 +468,27 @@
 
     .hero h1 {
         width: 330px;
-        font-size: 38px;
+        font-size: 37px;
         padding-right: 2px;
         border-right-width: 4px;
         animation-name: typing-small, blink-caret;
     }
 
     .hero p {
-        font-size: 28px;
+        font-size: 27px;
     }
 
     .hero .hero-button-container {
-        flex-direction: column;
+        gap: 10px;
     }
 
-    .hero .blog-button {
-        display: block;
+    .hero .hero-button {
+        width: 135px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .hero .hero-button .view-text {
         display: none;
     }
 
@@ -495,12 +499,12 @@
 
     @keyframes typing-small {
         0% { width: 0; }
-        100% { width: 320px; }
+        100% { width: 310px; }
     }
 
     @-webkit-keyframes typing-small {
         0% { width: 0; }
-        100% { width: 320px; }
+        100% { width: 310px; }
     }
 }
 

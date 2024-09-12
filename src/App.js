@@ -8,23 +8,24 @@ import Footer from "./components/Footer";
 import * as Static from "./components/StaticPages";
 
 export default function App() {
-    const heroRef = useRef(null);
-    const aboutRef = useRef(null);
-    const projectsRef = useRef(null);
-    const contactRef = useRef(null);
+    const refs = {
+        heroRef: useRef(null),
+        aboutRef: useRef(null),
+        projectsRef: useRef(null),
+        contactRef: useRef(null)
+    };
 
     return (
         <div className="App">
-            <Router basename="/portfolio">
+            <Router>
                 <Loading />
                 <Cursor />
                 <header>
-                    <NavBar heroRef={heroRef} aboutRef={aboutRef} projectsRef={projectsRef} contactRef={contactRef} />
+                    <NavBar refs={refs} />
                 </header>
                 <main>
                     <Routes>
-                        <Route index element={ <HomePage heroRef={heroRef} aboutRef={aboutRef} projectsRef={projectsRef} contactRef={contactRef} /> } />
-                        <Route path="/resume" element={ <Static.Resume /> } />
+                        <Route index element={ <HomePage refs={refs} /> } />
                         <Route path="*" element={ <Static.PageNotFound /> } />
                     </Routes>
                 </main>

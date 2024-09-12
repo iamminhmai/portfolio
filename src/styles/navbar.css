@@ -250,7 +250,7 @@ a.nav-link:hover::after {
     }
 
     .instagram-icon:hover {
-        fill: url(#instagram-gradient);
+        fill: url(#instagram-gradient-1);
     }
 
     @keyframes navbar-slide-in {

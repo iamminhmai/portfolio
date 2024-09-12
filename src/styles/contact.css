@@ -141,6 +141,16 @@
     color: var(--text-color);
 }
 
+.contact-form .form-floating input:user-valid,
+.contact-form .form-floating textarea:user-valid {
+    border-color: #198754;
+}
+
+.contact-form .form-floating input:user-invalid,
+.contact-form .form-floating textarea:user-invalid {
+    border-color: #dc3545;
+}
+
 .contact-form .form-floating .invalid-feedback {
     font-size: 12px;
 }

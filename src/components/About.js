@@ -1,7 +1,7 @@
-import '../styles/about.css';
 import { useState, useEffect } from 'react';
-import { ReactIcon, NextjsIcon, JavaScriptIcon, HtmlIcon, CssIcon } from './svg-skills/Frontend';
-import { MongoDBIcon, ExpressjsIcon, NodejsIcon, PosgreSQLIcon, PythonIcon } from './svg-skills/Backend';
+import FrontendSkills from './svg-icons/Frontend';
+import BackendSkills from './svg-icons/Backend';
+import '../styles/about.css';
 
 const WhoAmI = () => {
     return (
@@ -24,20 +24,8 @@ const MyStack = () => {
         <>
             <h3>My Stack</h3>
             <div className="stack-container">
-                <div className="skills-container frontend-wrapper">
-                    <ReactIcon />
-                    <NextjsIcon />
-                    <JavaScriptIcon />
-                    <HtmlIcon />
-                    <CssIcon />
-                </div>
-                <div className="skills-container backend-wrapper">
-                    <MongoDBIcon />
-                    <ExpressjsIcon />
-                    <NodejsIcon />
-                    <PosgreSQLIcon />
-                    <PythonIcon />
-                </div>
+                <FrontendSkills />
+                <BackendSkills />
             </div>
         </>
     );

@@ -172,7 +172,7 @@ export default function Contact(props) {
                             id="messageInput"
                             name="message"
                             placeholder="Message"
-                            style={{ height: "200px" }}
+                            style={{ height: "220px" }}
                         />
                         <label htmlFor="messageInput"><i className="fa-solid fa-inbox"></i>Message</label>
                         <Form.Control.Feedback type="invalid">

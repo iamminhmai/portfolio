@@ -4,8 +4,8 @@ import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
 
-export default function HomePage(props) {
-    const { heroRef, aboutRef, projectsRef, contactRef } = props;
+export default function HomePage({ refs }) {
+    const { heroRef, aboutRef, projectsRef, contactRef } = refs;
     
     useEffect(() => {
         setTimeout(() => {

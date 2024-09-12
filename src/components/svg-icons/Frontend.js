@@ -1,4 +1,4 @@
-export const ReactIcon = () => {
+const ReactIcon = () => {
     return (
         <div className="icon react-icon">
             <a href="https://react.dev/" target="_blank" rel="noreferrer">
@@ -16,7 +16,7 @@ export const ReactIcon = () => {
     );
 };
 
-export const NextjsIcon = () => {
+const NextjsIcon = () => {
     return (
         <div className="icon nextjs-icon">
             <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
@@ -37,7 +37,7 @@ export const NextjsIcon = () => {
     );
 };
 
-export const JavaScriptIcon = () => {
+const JavaScriptIcon = () => {
     return (
         <div className="icon javascript-icon">
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
@@ -53,7 +53,7 @@ export const JavaScriptIcon = () => {
     );
 };
 
-export const HtmlIcon = () => {
+const HtmlIcon = () => {
     return (
         <div className="icon html-icon">
             <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noreferrer">
@@ -71,7 +71,7 @@ export const HtmlIcon = () => {
     );
 };
 
-export const CssIcon = () => {
+const CssIcon = () => {
     return (
         <div className="icon css-icon">
             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noreferrer">
@@ -87,6 +87,18 @@ export const CssIcon = () => {
             </a>
             <span className="title primary">CSS3</span>
             <span className="title secondary">Style Sheets</span>
+        </div>
+    );
+};
+
+export default function FrontendSkills() {
+    return (
+        <div className="skills-container frontend-wrapper">
+            <ReactIcon />
+            <NextjsIcon />
+            <JavaScriptIcon />
+            <HtmlIcon />
+            <CssIcon />
         </div>
     );
 };
