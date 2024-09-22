@@ -1,7 +1,7 @@
 import '../styles/projects.css';
 import foodie from "../assets/imgs/foodie.jpg"
-import retirement from "../assets/imgs/retirement.jpg"
-import launching from "../assets/imgs/coming-soon2.jpg"
+import retirement from "../assets/imgs/retirement.png"
+import launching from "../assets/imgs/coming-soon.jpg"
 import studify from "../assets/imgs/studify.jpg"
 
 export default function Projects(props) {
@@ -22,7 +22,7 @@ export default function Projects(props) {
                         <img src={launching} alt="Coming Soon"></img>
                     </div>
                 </div>
-                <div className="project-card test" style={{width:"350px"}}>
+                <div className="project-card active" style={{width:"350px"}}>
                     <div className="project-card-mask">
                         <a href="https://retirement-adequacy-test-c83be212b50e.herokuapp.com/" target="_blank" rel="noreferrer">
                             <div className="project-card-arrow">

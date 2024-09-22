@@ -6,8 +6,8 @@
     width: min(700px, 100%);
 }
 
-.projects .project-card:not(.test) p, 
-.projects .project-card:not(.test) h3 {
+.projects .project-card:not(.active) p, 
+.projects .project-card:not(.active) h3 {
     display: none;
 }
 
@@ -20,6 +20,7 @@
 .projects .project-card {
     width: 150px;
     position: relative;
+    overflow: hidden;
 }
 
 .projects .project-card .project-card-mask,
@@ -29,8 +30,7 @@
     border-radius: 10px;
 }
 
-
-.projects .project-card-mask {
+.projects .project-card .project-card-mask {
     position: absolute;
     top: 0;
     left: 0;
@@ -71,9 +71,9 @@
 }
 
 .projects .project-card-description h3 {
-    font-size: 18px;
+    font-size: 20px;
     text-transform: uppercase;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     font-family: "Beckman";
 }
 
@@ -99,12 +99,10 @@
     width: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
     background: rgb(115 187 197);
-    /* background-color: rgb(28, 29, 37); */
-    opacity: 0.08;
+    opacity: 0.1;
     z-index: 1;
-    /* opacity: 1; */
     transition: opacity 0.2s ease-in-out;
 }
 
@@ -112,22 +110,26 @@
     opacity: 0;
 }
 
-.projects .project-card.test:hover .project-card-description {
+/* Active */
+.projects .project-card.active:hover .project-card-description {
     scale: 1.02;
     transform: translate(5px, -3px);
+}
+
+
+/* Inactive */
+.projects .project-card.inactive:hover .project-card-description {
+    transform: translateX(130%);
 }
 
 .projects .project-card.inactive .project-card-description {
     position: absolute;
     right: 0;
-    padding: 6px;
+    padding: 8px 6px;
     background: rgba(0, 0, 0, 0.7);
-    /* border-top-left-radius: 8px;
-    border-bottom-right-radius: 8px; */
-    /* border-radius: 8px; */
-    margin: 10px 10px 8px;
+    border-radius: 4px;
+    margin: 8px 6px;
     color: var(--bg);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .projects .project-card.inactive h3 {
@@ -135,10 +137,9 @@
     writing-mode: vertical-rl;
     transform: scale(-1);
     margin-bottom: 0;
-
 }
 
-
+/* Arrow */
 .projects .project-card-arrow {
     position: absolute;
     top: 35%;
