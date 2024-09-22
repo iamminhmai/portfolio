@@ -110,11 +110,11 @@
     color: var(--subtext-color);
 }
 
-.contact-form .row div:first-child {
+.contact-form .row > div:first-child {
     padding-right: 8px;
 }
 
-.contact-form .row div:last-child {
+.contact-form .row > div:last-child {
     padding-left: 8px;
 }
 
@@ -169,6 +169,10 @@
     font-size: 12px;
     color: gray;
     margin-bottom: 8px;
+}
+
+.contact .recaptcha-label span {
+    font-size: 14px;
 }
 
 .contact .contact-button {

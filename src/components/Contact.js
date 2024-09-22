@@ -134,7 +134,7 @@ export default function Contact(props) {
                             />
                             <label htmlFor="nameInput"><i className="fa-solid fa-circle-user"></i>Name</label>
                             <Form.Control.Feedback type="invalid">
-                                Please provide a name.
+                                Please provide a name
                             </Form.Control.Feedback>
                         </Form.Floating>
                         <Form.Floating className="mb-3" as={Col} lg={6} md={12} sm={12}>
@@ -148,7 +148,7 @@ export default function Contact(props) {
                             />
                             <label htmlFor="emailInput"><i className="fa-solid fa-envelope"></i>Email</label>
                             <Form.Control.Feedback type="invalid">
-                                Please provide a valid email.
+                                Please provide a valid email
                             </Form.Control.Feedback>
                         </Form.Floating>
                     </Row>
@@ -162,7 +162,7 @@ export default function Contact(props) {
                         />
                         <label htmlFor="subjectInput"><i className="fa-solid fa-pen"></i>Subject</label>
                         <Form.Control.Feedback type="invalid">
-                            Please provide a subject.
+                            Please provide a subject
                         </Form.Control.Feedback>
                     </Form.Floating>
                     <Form.Floating className="mb-3">
@@ -176,10 +176,10 @@ export default function Contact(props) {
                         />
                         <label htmlFor="messageInput"><i className="fa-solid fa-inbox"></i>Message</label>
                         <Form.Control.Feedback type="invalid">
-                            Please provide a message.
+                            Please provide a message
                         </Form.Control.Feedback>
                     </Form.Floating>
-                    <p id="recaptcha-label" className="recaptcha-label">Please verify you are not a robot.</p>
+                    <p id="recaptcha-label" className="recaptcha-label">Please verify you are not a robot <span>&#129302;</span></p>
                     <ReCAPTCHA 
                         sitekey={SITE_KEY} 
                         className="mb-4 recaptcha" 
@@ -187,7 +187,9 @@ export default function Contact(props) {
                         onChange={setReCAPTCHA}
                         ref={reCAPTCHARef}
                     />
-                    <button type="submit" className="contact-button"><span>Send Message<i className="fa-solid fa-arrow-up"></i></span></button>
+                    <button type="submit" className="contact-button">
+                        <span>Send Message<i className="fa-solid fa-arrow-up"></i></span>
+                    </button>
                 </Form>
             </div>
         </section>
