@@ -6,11 +6,6 @@
     width: min(700px, 100%);
 }
 
-.projects .project-card:not(.active) p, 
-.projects .project-card:not(.active) h3 {
-    display: none;
-}
-
 .projects-container {
     display: flex;
     gap: 25px;
@@ -18,11 +13,12 @@
 }
 
 .projects .project-card {
-    width: 150px;
     position: relative;
     overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.projects .project-card,
 .projects .project-card .project-card-mask,
 .projects .project-card .project-card-mask::before,
 .projects .project-card img,
@@ -88,7 +84,6 @@
     width: 150px;
     object-fit: cover;
     position: relative;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .projects .project-card .project-card-image::before {
@@ -116,12 +111,7 @@
     transform: translate(5px, -3px);
 }
 
-
 /* Inactive */
-.projects .project-card.inactive:hover .project-card-description {
-    transform: translateX(130%);
-}
-
 .projects .project-card.inactive .project-card-description {
     position: absolute;
     right: 0;
@@ -130,6 +120,7 @@
     border-radius: 4px;
     margin: 8px 6px;
     color: var(--bg);
+    overflow: hidden;
 }
 
 .projects .project-card.inactive h3 {
@@ -139,8 +130,32 @@
     margin-bottom: 0;
 }
 
-/* Arrow */
-.projects .project-card-arrow {
+.projects .project-card.inactive p {
+    display: none;
+}
+
+.projects .project-card.inactive .project-card-expand {
+    font-size: 20px;
+    color: var(--bg);
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease-out 0.1s;
+}
+
+.projects .project-card.inactive:hover .project-card-description {
+    transform: translateX(130%);
+}
+
+.projects .project-card.inactive:hover .project-card-expand {
+    opacity: 1;
+}
+
+/* Link */
+.projects .project-card-link {
     position: absolute;
     top: 35%;
     left: 50%;
@@ -149,15 +164,15 @@
     transition: opacity 0.3s ease-out;
 }
 
-.projects .project-card-arrow i.fa-circle {
+.projects .project-card-link i.fa-circle {
     color: var(--subtext-color);
 }
 
-.projects .project-card-arrow i.fa-arrow-up-long {
+.projects .project-card-link i.fa-arrow-up-long {
     rotate: 45deg;
     color: var(--bg);
 }
 
-.projects .project-card:hover .project-card-arrow {
+.projects .project-card:hover .project-card-link {
     opacity: 1;
 }
