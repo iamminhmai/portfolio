@@ -1,16 +1,13 @@
 import '../styles/projects.css';
-import { useState } from 'react';
-import foodie from "../assets/imgs/foodie.jpg"
-import retirement from "../assets/imgs/retirement.png"
-import coming from "../assets/imgs/coming.jpg"
-import studify from "../assets/imgs/studify.jpg"
+import { useState, useEffect } from 'react';
+import coming from "../assets/images/coming.jpg"
+import retirement from "../assets/images/retirement.png"
+import foodie from "../assets/images/foodie.jpg"
+import studify from "../assets/images/studify.jpg"
 
 const Description = () => {
     return (
-        <>
-            <h2>Projects<span className="text-dot">.</span></h2>
-            <p className="projects-description mb-5">These projects demonstrate my expertise with practical examples of some of my work, including brief descriptions. They showcase my ability to tackle intricate challenges, adapt to various technologies, and efficiently oversee projects.</p>
-        </>
+        <p className="projects-description mb-5">These projects demonstrate my expertise with practical examples of some of my work, including brief descriptions and live demos. They showcase my ability to tackle intricate challenges, adapt to various technologies, and efficiently oversee projects.</p>
     );
 };
 
@@ -23,7 +20,7 @@ const ProjectCards = () => {
             alt: "Coming Soon",
             title: "Coming Soon...",
             description: "A new project will be launching soon!!",
-            link: "/"
+            link: ""
 
         },
         {
@@ -53,7 +50,7 @@ const ProjectCards = () => {
     ];
 
     return (
-        <div className="projects-container">
+            <>
             {projects.map((project, index) => (
                 <div 
                     key={project.id}
@@ -61,7 +58,8 @@ const ProjectCards = () => {
                     onClick={() => setActiveIndex(index)}  
                     style={{ 
                         width: activeIndex === index ? "350px" : "150px",
-                        transition: 'width 0.3s ease-out'
+                        transition: 'width 0.3s ease-out',
+     
                     }}
                 >
                     {activeIndex === index && project.link && (
@@ -95,16 +93,46 @@ const ProjectCards = () => {
                     </div>
                 </div>
             ))}
-        </div>
-    )
-}
+        </>
+    );
+};
 
 export default function Projects(props) {
     const projectsRef = props.projectsRef;
+    const [isAnimated, setIsAnimated] = useState(false);
+    const [slideRight, setSlideRight] = useState(false);
+
+    useEffect(() => {
+        const sectionRef = projectsRef.current;
+        if (!sectionRef) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.intersectionRatio >= 0.2) {
+                        setIsAnimated(true);
+                        setSlideRight(true);
+
+                    } else {
+                        setIsAnimated(false);
+                        setSlideRight(false);
+                    }
+                });
+            },
+            { threshold: [0.2, 0.6] }
+        );
+
+        observer.observe(sectionRef);
+
+        return () => observer.disconnect();
+    });
     return (
         <section ref={projectsRef} id="projects" className="projects">
+            <h2 className={`section-title ${isAnimated ? 'animated' : 'animated-out'}`}>Projects<span className="text-dot">.</span></h2>
             <Description />
-            <ProjectCards />
+            <div className={`projects-container ${slideRight ? 'slide-right' : ''}`}>
+                <ProjectCards />
+            </div>
         </section>
     )
 }

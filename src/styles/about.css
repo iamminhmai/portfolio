@@ -2,14 +2,6 @@
     padding: 50px 100px;
 }
 
-.about-title.animated {
-    animation: slide-in-top-title 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.about-title.animated-out {
-    animation: slide-out-top-title 0.2s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-
 .about h3 {
     font-size: 18px;
     text-transform: uppercase;
@@ -144,33 +136,6 @@
 }
 
 /* ANIMATION */
-
-/* Title */
-@keyframes slide-out-top-title {
-    0% {
-        transform: translateY(0);
-        -webkit-transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-30px);
-        -webkit-transform: translateY(-30px);
-        opacity: 0;
-    }
-  }
-
-@keyframes slide-in-top-title {
-    0% {
-        transform: translateY(-50px);
-        -webkit-transform: translateY(-50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        -webkit-transform: translateY(0);
-        opacity: 1;
-    }
-}
 
 /* Skill icons */
 @keyframes scroll-left {

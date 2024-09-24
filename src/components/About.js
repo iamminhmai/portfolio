@@ -67,7 +67,7 @@ export default function About(props) {
     
     return (
         <section ref={aboutRef} id="about" className="about">
-            <h2 className={`about-title ${isAnimated ? 'animated' : 'animated-out'}`}>About<span className="text-dot">.</span></h2>
+            <h2 className={`section-title ${isAnimated ? 'animated' : 'animated-out'}`}>About<span className="text-dot">.</span></h2>
             <div className="about-container">
                 <div className={`about-container-mask ${slideRight ? 'slide-to-right' : ''}`}></div>
                 <WhoAmI />
