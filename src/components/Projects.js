@@ -1,9 +1,6 @@
 import '../styles/projects.css';
 import { useState, useEffect } from 'react';
-import coming from "../assets/images/coming.jpg"
-import retirement from "../assets/images/retirement.png"
-import foodie from "../assets/images/foodie.jpg"
-import studify from "../assets/images/studify.jpg"
+import { projectsData as PROJECTS_DATA }  from "./constants/ProjectsData";
 
 const Description = () => {
     return (
@@ -13,45 +10,9 @@ const Description = () => {
 
 const ProjectCards = () => {
     const [activeIndex, setActiveIndex] = useState(1);
-    const projects = [
-        {
-            id: 1,
-            src: coming,
-            alt: "Coming Soon",
-            title: "Coming Soon...",
-            description: "A new project will be launching soon!!",
-            link: ""
-
-        },
-        {
-            id: 2,
-            src: retirement,
-            alt: "Retirement Adequacy",
-            title: "Retirement Adequacy",
-            description: "Allow workers to access retirement estimates",
-            link: "https://retirement-adequacy-test-c83be212b50e.herokuapp.com/"
-        },
-        {
-            id: 3,
-            src: foodie,
-            alt: "Foodie Finder",
-            title: "Foodie Finder",
-            description: "Connect food lovers with quick, affordable meals",
-            link: "https://foodiefinder.minh-mai.me/"
-        },
-        {
-            id: 4,
-            src: studify,
-            alt: "Studify",
-            title: "Studify",
-            description: "Create study groups and enjoy a tailored experience",
-            link: "https://studify-883c3.web.app/"
-        },
-    ];
-
     return (
             <>
-            {projects.map((project, index) => (
+            {PROJECTS_DATA.map((project, index) => (
                 <div 
                     key={project.id}
                     className={`project-card ${activeIndex === index ? 'active' : 'inactive'}`} 
@@ -64,6 +25,13 @@ const ProjectCards = () => {
                 >
                     {activeIndex === index && project.link && (
                         <div className="project-card-mask">
+                            {project.role && (
+                                <div className="project-card-role-container">
+                                    {project.role.map((role, index) => (
+                                        <div key={index} className="project-card-role">{role}</div>
+                                    ))}
+                                </div>
+                            )}
                             <a href={project.link} target="_blank" rel="noreferrer">
                                 <div className="project-card-link">
                                     <span className="fa-stack fa-2x">
@@ -119,7 +87,7 @@ export default function Projects(props) {
                     }
                 });
             },
-            { threshold: [0.2, 0.6] }
+            { threshold: 0.2}
         );
 
         observer.observe(sectionRef);
@@ -130,7 +98,7 @@ export default function Projects(props) {
         <section ref={projectsRef} id="projects" className="projects">
             <h2 className={`section-title ${isAnimated ? 'animated' : 'animated-out'}`}>Projects<span className="text-dot">.</span></h2>
             <Description />
-            <div className={`projects-container ${slideRight ? 'slide-right' : ''}`}>
+            <div className={`projects-container ${slideRight ? 'slide-right' : 'slide-left'}`}>
                 <ProjectCards />
             </div>
         </section>

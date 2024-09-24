@@ -1,5 +1,6 @@
 .projects {
     padding: 50px 100px;
+    overflow: hidden;
 }
 
 .projects .projects-description {
@@ -16,7 +17,17 @@
     position: relative;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    opacity: 0;
+    opacity: 1;
+}
+
+/* .projects .project-card,
+.projects .project-card-image {
+    flex-grow: 1;
+
+} */
+
+.projects .projects-container.slide-left {
+    animation: slide-out-project 1s ease-in both;
 }
 
 .projects .projects-container.slide-right .project-card {
@@ -43,6 +54,11 @@
 .projects .project-card.inactive {
     
 } */
+
+@keyframes slide-out-project {
+    from { transform: translateX(0); }
+    to { transform: translateX(-2000px); }
+}
 
 @keyframes slide-in-project {
     from {
@@ -97,6 +113,22 @@
 
 .projects .project-card:hover .project-card-mask::before {
     transform: translateY(0);
+}
+
+.projects .project-card .project-card-role-container {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.projects .project-card .project-card-role {
+    background-color: rgba(21, 21, 21, 0.6);
+    color: rgba(245, 245, 245, 0.7);
+    padding: 5px 14px;
+    font-size: 12px;
+    border-radius: 20px;
 }
 
 .projects .project-card-description {

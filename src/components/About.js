@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import FrontendSkills from './svg-icons/Frontend';
-import BackendSkills from './svg-icons/Backend';
+import FrontendSkills from './constants/FrontendIcons';
+import BackendSkills from './constants/BackendIcons';
 import '../styles/about.css';
 
 const WhoAmI = () => {

@@ -1,4 +1,4 @@
-import SocialMedia from './svg-icons/SocialMedia';
+import SocialMedia from './constants/SocialMediaIcons';
 import '../styles/footer.css';
 
 export default function Footer() {
