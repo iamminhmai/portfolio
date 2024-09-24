@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.8116bf3a.css",
-    "main.js": "/portfolio/static/js/main.95721b4e.js",
+    "main.css": "/portfolio/static/css/main.da25b8e0.css",
+    "main.js": "/portfolio/static/js/main.27a0786e.js",
     "static/media/retirement.png": "/portfolio/static/media/retirement.8607a83c5fe291a3f5ff.png",
     "static/media/foodie.jpg": "/portfolio/static/media/foodie.490f8a7d39b68b3007b5.jpg",
     "static/media/Satoshi-VariableItalic.ttf": "/portfolio/static/media/Satoshi-VariableItalic.9519fea9567e2405bc08.ttf",
@@ -43,11 +43,11 @@
     "static/media/Satoshi-LightItalic.woff2": "/portfolio/static/media/Satoshi-LightItalic.540a6dd2e29f70e15477.woff2",
     "static/media/Satoshi-Light.woff2": "/portfolio/static/media/Satoshi-Light.df8f06167ee6fd05a131.woff2",
     "index.html": "/portfolio/index.html",
-    "main.8116bf3a.css.map": "/portfolio/static/css/main.8116bf3a.css.map",
-    "main.95721b4e.js.map": "/portfolio/static/js/main.95721b4e.js.map"
+    "main.da25b8e0.css.map": "/portfolio/static/css/main.da25b8e0.css.map",
+    "main.27a0786e.js.map": "/portfolio/static/js/main.27a0786e.js.map"
   },
   "entrypoints": [
-    "static/css/main.8116bf3a.css",
-    "static/js/main.95721b4e.js"
+    "static/css/main.da25b8e0.css",
+    "static/js/main.27a0786e.js"
   ]
 }
