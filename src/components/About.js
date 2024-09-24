@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import FrontendSkills from './constants/FrontendIcons';
-import BackendSkills from './constants/BackendIcons';
-import '../styles/about.css';
+import { useState, useEffect } from "react";
+import FrontendSkills from "./constants/FrontendIcons";
+import BackendSkills from "./constants/BackendIcons";
+import "../styles/about.css";
 
 const WhoAmI = () => {
     return (
@@ -67,9 +67,9 @@ export default function About(props) {
     
     return (
         <section ref={aboutRef} id="about" className="about">
-            <h2 className={`section-title ${isAnimated ? 'animated' : 'animated-out'}`}>About<span className="text-dot">.</span></h2>
+            <h2 className={`section-title ${isAnimated ? "animated" : "animated-out"}`}>About<span className="text-dot">.</span></h2>
             <div className="about-container">
-                <div className={`about-container-mask ${slideRight ? 'slide-to-right' : ''}`}></div>
+                <div className={`about-container-mask ${slideRight ? "slide-to-right" : ""}`}></div>
                 <WhoAmI />
                 <MyStack />
             </div>

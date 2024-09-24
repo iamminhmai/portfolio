@@ -1,18 +1,15 @@
-import { useState, useEffect } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import SocialMedia from './constants/SocialMediaIcons';
-import logo from '../assets/files/logo.png';
-import '../styles/navbar.css';
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import SocialMedia from "./constants/SocialMediaIcons";
+import logo from "../assets/files/logo.png";
+import "../styles/navbar.css";
 
 export default function NavBar({ refs }) {
     const { heroRef, aboutRef, projectsRef, contactRef } = refs;
-
     const [isExpanded, setIsExpanded] = useState(false);
-    const navigate = useNavigate();
-    const location = useLocation();
 
     const handleNavLinkClick = (event, ref) => {
         event.preventDefault();
@@ -30,15 +27,15 @@ export default function NavBar({ refs }) {
 
     useEffect(() => {
         if (isExpanded) {
-            document.body.style.overflowY = 'hidden'; 
-            document.querySelector('main').classList.add("blurred-content");
-            document.querySelector('footer').classList.add("blurred-content");
-            document.querySelector('.navbar').classList.add('navbar-expanded');
+            document.body.style.overflowY = "hidden"; 
+            document.querySelector("main").classList.add("blurred-content");
+            document.querySelector("footer").classList.add("blurred-content");
+            document.querySelector(".navbar").classList.add("navbar-expanded");
         } else {
-            document.body.style.overflowY = 'auto'; 
-            document.querySelector('main').classList.remove("blurred-content");
-            document.querySelector('footer').classList.remove("blurred-content");
-            document.querySelector('.navbar').classList.remove('navbar-expanded');
+            document.body.style.overflowY = "auto"; 
+            document.querySelector("main").classList.remove("blurred-content");
+            document.querySelector("footer").classList.remove("blurred-content");
+            document.querySelector(".navbar").classList.remove("navbar-expanded");
         }
     }, [isExpanded]);
 

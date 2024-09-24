@@ -1,27 +1,25 @@
-import '../styles/projects.css';
-import { useState, useEffect } from 'react';
+import "../styles/projects.css";
+import { useState, useEffect } from "react";
 import { projectsData as PROJECTS_DATA }  from "./constants/ProjectsData";
 
 const Description = () => {
     return (
-        <p className="projects-description mb-5">These projects demonstrate my expertise with practical examples of some of my work, including brief descriptions and live demos. They showcase my ability to tackle intricate challenges, adapt to various technologies, and efficiently oversee projects.</p>
+        <p className="projects-description">
+            These projects demonstrate my expertise with practical examples of some of my work, including brief descriptions and live demos. They showcase my ability to tackle intricate challenges, adapt to various technologies, and efficiently oversee projects.
+        </p>
     );
 };
 
 const ProjectCards = () => {
     const [activeIndex, setActiveIndex] = useState(1);
+    
     return (
             <>
             {PROJECTS_DATA.map((project, index) => (
                 <div 
                     key={project.id}
-                    className={`project-card ${activeIndex === index ? 'active' : 'inactive'}`} 
+                    className={`project-card ${activeIndex === index ? "active" : "inactive"}`} 
                     onClick={() => setActiveIndex(index)}  
-                    style={{ 
-                        width: activeIndex === index ? "350px" : "150px",
-                        transition: 'width 0.3s ease-out',
-     
-                    }}
                 >
                     {activeIndex === index && project.link && (
                         <div className="project-card-mask">
@@ -42,22 +40,18 @@ const ProjectCards = () => {
                             </a>
                         </div>
                     )}
-                    {activeIndex != index && (
-                        <i className="fa-solid fa-left-right project-card-expand"></i>
+                    {activeIndex !== index && (
+                        <>
+                            <i className="fa-solid fa-left-right project-card-expand"></i>
+                            <i className="fa-solid fa-up-down project-card-expand"></i>
+                        </>
                     )}
                     <div className="project-card-description">
                         <h3>{project.title}</h3>
                         <p>{project.description}</p>
                     </div>
                     <div className="project-card-image">
-                        <img 
-                            src={project.src} 
-                            alt={project.alt} 
-                            style={{ 
-                                width: activeIndex === index ? "350px" : "150px",
-                                transition: 'width 0.3s ease-out'
-                             }} 
-                        />
+                        <img src={project.src} alt={project.alt}/>
                     </div>
                 </div>
             ))}
@@ -87,7 +81,7 @@ export default function Projects(props) {
                     }
                 });
             },
-            { threshold: 0.2}
+            { threshold: 0.2 }
         );
 
         observer.observe(sectionRef);
@@ -96,11 +90,11 @@ export default function Projects(props) {
     });
     return (
         <section ref={projectsRef} id="projects" className="projects">
-            <h2 className={`section-title ${isAnimated ? 'animated' : 'animated-out'}`}>Projects<span className="text-dot">.</span></h2>
+            <h2 className={`section-title ${isAnimated ? "animated" : "animated-out"}`}>Projects<span className="text-dot">.</span></h2>
             <Description />
-            <div className={`projects-container ${slideRight ? 'slide-right' : 'slide-left'}`}>
+            <div className={`projects-container ${slideRight ? "slide-right" : "slide-left"}`}>
                 <ProjectCards />
             </div>
         </section>
-    )
-}
+    );
+};

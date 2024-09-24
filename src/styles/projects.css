@@ -5,6 +5,7 @@
 
 .projects .projects-description {
     width: min(700px, 100%);
+    margin-bottom: 40px;
 }
 
 .projects-container {
@@ -18,13 +19,8 @@
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     opacity: 1;
+    transition: width 0.3s ease-out;
 }
-
-/* .projects .project-card,
-.projects .project-card-image {
-    flex-grow: 1;
-
-} */
 
 .projects .projects-container.slide-left {
     animation: slide-out-project 1s ease-in both;
@@ -50,31 +46,20 @@
     animation-delay: 2s;
 }
 
-/* .projects .project-card.active,
-.projects .project-card.inactive {
-    
-} */
-
-@keyframes slide-out-project {
-    from { transform: translateX(0); }
-    to { transform: translateX(-2000px); }
+.projects .project-card,
+.projects .project-card img {
+    height: 330px;
 }
 
-@keyframes slide-in-project {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.projects .project-card.active,
+.projects .project-card.active img {
+    width: 350px;
 }
 
-/* .projects .project-card.inactive,
+.projects .project-card.inactive,
 .projects .project-card.inactive img {
     width: 150px;
-} */
+}
 
 .projects .project-card,
 .projects .project-card .project-card-mask,
@@ -128,6 +113,7 @@
     color: rgba(245, 245, 245, 0.7);
     padding: 5px 14px;
     font-size: 12px;
+    font-family: "Nunito", sans-serif;
     border-radius: 20px;
 }
 
@@ -144,20 +130,19 @@
     font-size: 20px;
     text-transform: uppercase;
     margin-bottom: 2px;
-    font-family: "Beckman";
+    font-family: "Beckman", sans-serif;
 }
 
 .projects .project-card-description p {
     margin: 0;
     font-size: 12px;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
 }
 
 .projects .project-card img {
-    height: 330px;
-    width: 150px;
     object-fit: cover;
     position: relative;
+    transition: width 0.3s ease-out;
 }
 
 .projects .project-card .project-card-image::before {
@@ -168,8 +153,8 @@
     width: 100%;
     top: 0;
     left: 0;
-    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
-    background: rgb(115 187 197);
+    /* background: rgb(115 187 197); */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     opacity: 0.1;
     z-index: 1;
     transition: opacity 0.2s ease-in-out;
@@ -180,12 +165,6 @@
 }
 
 /* Active */
-/* .projects .project-card.active,
-.projects .project-card.active img {
-    width: 350px;
-    transition: width 0.3s ease-out;
-} */
-
 .projects .project-card.active:hover .project-card-description {
     scale: 1.02;
     transform: translate(5px, -3px);
@@ -227,6 +206,10 @@
     text-shadow: 1px 1px 1px rgb(21, 21, 21);
 }
 
+.projects .project-card.inactive .fa-up-down {
+    display: none;
+}
+
 .projects .project-card.inactive:hover .project-card-description {
     transform: translateX(130%);
 }
@@ -234,6 +217,7 @@
 .projects .project-card.inactive:hover .project-card-expand {
     opacity: 1;
 }
+
 
 /* Link */
 .projects .project-card-link {
@@ -256,4 +240,80 @@
 
 .projects .project-card:hover .project-card-link {
     opacity: 1;
+}
+
+/* ANIMATION */
+@keyframes slide-out-project {
+    from { transform: translateX(0); }
+    to { transform: translateX(-2000px); }
+}
+
+@keyframes slide-in-project {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 992px) {
+    .projects {
+        overflow: visible;
+    }
+
+    .projects .projects-description {
+        margin-bottom: 30px;
+    }
+
+    .projects .projects-container {
+        margin-bottom: 15px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .projects .project-card.active,
+    .projects .project-card.active img,
+    .projects .project-card.inactive,
+    .projects .project-card.inactive img {
+        width: 100%;
+    }
+
+    .projects .project-card.active,
+    .projects .project-card.active img {
+        height: 290px;
+    }
+
+    .projects .project-card.inactive,
+    .projects .project-card.inactive img {
+        height: 60px;
+    }
+
+    .projects .project-card,
+    .projects .project-card img {
+        transition: height 0.3s ease-out;
+    }
+
+    .projects .project-card.inactive .project-card-description {
+        margin: 6px;
+        padding: 6px;
+    }
+
+    .projects .project-card.inactive h3 {
+        writing-mode: horizontal-tb;
+        transform: scale(1);
+        font-size: 18px;
+    }
+
+    .projects .project-card.inactive .fa-up-down {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .projects .project-card.inactive .fa-left-right {
+        display: none;
+    }
 }

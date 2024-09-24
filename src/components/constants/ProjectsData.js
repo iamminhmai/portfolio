@@ -24,15 +24,6 @@ export const projectsData = [
     },
     {
         id: 3,
-        src: foodie,
-        role: ["Frontend", "Backend"],
-        alt: "Foodie Finder",
-        title: "Foodie Finder",
-        description: "Connect food lovers with quick, affordable meals",
-        link: "https://foodiefinder.minh-mai.me/"
-    },
-    {
-        id: 4,
         src: studify,
         role: ["Frontend", "UI/UX"],
         alt: "Studify",
@@ -40,4 +31,13 @@ export const projectsData = [
         description: "Create study groups and enjoy a tailored experience",
         link: "https://studify-883c3.web.app/"
     },
+    {
+        id: 4,
+        src: foodie,
+        role: ["Frontend", "Backend"],
+        alt: "Foodie Finder",
+        title: "Foodie Finder",
+        description: "Connect food lovers with quick, affordable meals",
+        link: "https://foodiefinder.minh-mai.me/"
+    }
 ];

@@ -1,12 +1,12 @@
-import { useState, useRef, useEffect } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import emailjs from '@emailjs/browser';
-import { ToastContainer, toast, Zoom } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'
-import '../styles/contact.css';
+import { useState, useRef, useEffect } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col"
+import "../styles/contact.css";
 
 const SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -17,38 +17,34 @@ export default function Contact(props) {
     const contactRef = props.contactRef;
     const contactFormRef = useRef();
     const reCAPTCHARef = useRef(null);
+    const [isAnimated, setIsAnimated] = useState(false);
+    const [slideRight, setSlideRight] = useState(false);
     const [loading, setLoading] = useState(false);
     const [reCAPTCHA, setReCAPTCHA] = useState(null);
     const [validated, setValidated] = useState(false);
 
     useEffect(() => {
         const sectionRef = contactRef.current;
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
-                    const titleElement = entry.target.querySelector('.contact-title');
-                    const contentElement = entry.target.querySelector(".contact-container-mask");
-
-                    // Calculate the ratio and determine the appropriate action
                     if (entry.intersectionRatio >= 0.5) {
-                        contentElement.classList.add("slide-to-right");
-                    } else if (entry.intersectionRatio < 0.5) {
-                        contentElement.classList.remove("slide-to-right");
+                        setSlideRight(true)
+                    } else {
+                        setSlideRight(false)
                     }
 
                     if (entry.intersectionRatio >= 0.2) {
-                        titleElement.classList.add('animated');
-                        titleElement.classList.remove('animated-out');
-                    } else if (entry.intersectionRatio < 0.2) {
-                        titleElement.classList.remove('animated');
-                        titleElement.classList.add('animated-out');
+                        setIsAnimated(true);
+                    } else {
+                        setIsAnimated(false);
                     }
                 });
             },
-            {
-                threshold: [0.2, 0.6]
-            }
+            { threshold: [0.2, 0.6] }
         );
+        
 
         if (sectionRef) {
             observer.observe(sectionRef);
@@ -97,7 +93,7 @@ export default function Contact(props) {
     };
 
     return (
-        <section ref={contactRef} id="contact" className={`contact ${loading ? "loading-mask" : ""}`}>
+        <section ref={contactRef} id="contact" className={`contact ${loading ? "contact-loading-mask" : ""}`}>
             <ToastContainer 
                 position="top-center"
                 autoClose={2000}
@@ -105,9 +101,9 @@ export default function Contact(props) {
                 pauseOnFocusLoss={false}
                 pauseOnHover={false}
             />
-            <h2 className="contact-title">Contact<span className="text-dot">.</span></h2>
+            <h2 className={`section-title ${isAnimated ? "animated" : "animated-out"}`}>Contact<span className="text-dot">.</span></h2>
             <div className="contact-container">
-                <div className="contact-container-mask"></div>
+                <div className={`contact-container-mask ${slideRight ? "slide-to-right" : ""}`}></div>
                 <div className="contact-heading">
                     <h3>Let's talk!</h3>
                     <p>What's on your mind?</p>
