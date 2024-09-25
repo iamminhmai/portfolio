@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col"
 import "../styles/contact.css";
 
-const SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
+// const SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
