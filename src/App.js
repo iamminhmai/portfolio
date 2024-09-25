@@ -17,7 +17,7 @@ export default function App() {
 
     return (
         <div className="App">
-            <Router basename="/portfolio">
+            <Router>
                 <Loading />
                 <Cursor />
                 <header>
