@@ -19,6 +19,7 @@ export default function Contact(props) {
     const reCAPTCHARef = useRef(null);
     const [isAnimated, setIsAnimated] = useState(false);
     const [slideRight, setSlideRight] = useState(false);
+    const [hasSlideAnimated, setHasSlideAnimated] = useState(false);
     const [loading, setLoading] = useState(false);
     const [reCAPTCHA, setReCAPTCHA] = useState(null);
     const [validated, setValidated] = useState(false);
@@ -29,10 +30,9 @@ export default function Contact(props) {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
-                    if (entry.intersectionRatio >= 0.5) {
-                        setSlideRight(true)
-                    } else {
-                        setSlideRight(false)
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.5 && !hasSlideAnimated) {
+                        setSlideRight(true);
+                        setHasSlideAnimated(true);
                     }
 
                     if (entry.intersectionRatio >= 0.2) {
@@ -45,15 +45,10 @@ export default function Contact(props) {
             { threshold: [0.2, 0.6] }
         );
         
+        observer.observe(sectionRef);
 
-        if (sectionRef) {
-            observer.observe(sectionRef);
-        }
-
-        return () => {
-            if (sectionRef) {
-                observer.unobserve(sectionRef);
-            }
+        return () => {  
+            observer.disconnect();     
         };
     });
     

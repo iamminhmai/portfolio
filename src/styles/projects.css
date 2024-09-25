@@ -1,11 +1,21 @@
 .projects {
     padding: 50px 100px;
-    overflow: hidden;
+    overflow: clip;
+    perspective: 1000;
 }
 
 .projects .projects-description {
     width: min(700px, 100%);
     margin-bottom: 40px;
+    opacity: 0;
+}
+
+.projects .projects-description.fade-text {
+    animation: fade-in-text 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes fade-in-text {
+    to { opacity: 1; }
 }
 
 .projects-container {

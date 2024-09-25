@@ -35,6 +35,7 @@ export default function About(props) {
     const aboutRef = props.aboutRef;
     const [isAnimated, setIsAnimated] = useState(false);
     const [slideRight, setSlideRight] = useState(false);
+    const [hasSlideAnimated, setHasSlideAnimated] = useState(false);
 
     useEffect(() => {
         const sectionRef = aboutRef.current;
@@ -43,10 +44,9 @@ export default function About(props) {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
-                    if (entry.intersectionRatio >= 0.5) {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.5 && !hasSlideAnimated) {
                         setSlideRight(true);
-                    } else {
-                        setSlideRight(false);
+                        setHasSlideAnimated(true);
                     }
 
                     if (entry.intersectionRatio >= 0.2) {
@@ -62,7 +62,9 @@ export default function About(props) {
 
         observer.observe(sectionRef);
 
-        return () => observer.disconnect();
+        return () => {
+            observer.disconnect();
+        }
     });
     
     return (

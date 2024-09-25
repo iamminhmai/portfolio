@@ -2,9 +2,9 @@ import "../styles/projects.css";
 import { useState, useEffect } from "react";
 import { projectsData as PROJECTS_DATA }  from "./constants/ProjectsData";
 
-const Description = () => {
+const Description = (props) => {
     return (
-        <p className="projects-description">
+        <p className={`projects-description ${props.fadeText ? "fade-text" : ""}`}>
             These projects demonstrate my expertise with practical examples of some of my work, including brief descriptions and live demos. They showcase my ability to tackle intricate challenges, adapt to various technologies, and efficiently oversee projects.
         </p>
     );
@@ -63,6 +63,7 @@ export default function Projects(props) {
     const projectsRef = props.projectsRef;
     const [isAnimated, setIsAnimated] = useState(false);
     const [slideRight, setSlideRight] = useState(false);
+    const [fadeText, setFadeText] = useState(false);
 
     useEffect(() => {
         const sectionRef = projectsRef.current;
@@ -74,10 +75,12 @@ export default function Projects(props) {
                     if (entry.intersectionRatio >= 0.2) {
                         setIsAnimated(true);
                         setSlideRight(true);
+                        setFadeText(true);
 
                     } else {
                         setIsAnimated(false);
                         setSlideRight(false);
+                        setFadeText(false);
                     }
                 });
             },
@@ -86,12 +89,14 @@ export default function Projects(props) {
 
         observer.observe(sectionRef);
 
-        return () => observer.disconnect();
+        return () => {
+            observer.disconnect();
+        }
     });
     return (
         <section ref={projectsRef} id="projects" className="projects">
             <h2 className={`section-title ${isAnimated ? "animated" : "animated-out"}`}>Projects<span className="text-dot">.</span></h2>
-            <Description />
+            <Description fadeText={fadeText} />
             <div className={`projects-container ${slideRight ? "slide-right" : "slide-left"}`}>
                 <ProjectCards />
             </div>
