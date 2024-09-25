@@ -59,7 +59,7 @@ export default function Contact(props) {
             contactFormRef.current.reset();
             setValidated(false);
             reCAPTCHARef.current.reset();
-            setReCAPTCHA(null);
+            // setReCAPTCHA(null);
             toast.success("Your message has been sent!", { transition: Zoom });
         } catch (error) {
             toast.error(`FAILED... ${error.text}. Please send me a message via email.`, {
