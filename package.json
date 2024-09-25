@@ -33,7 +33,10 @@
     ]
   },
   "eslintrc": {
-    "extends": ["@babel/plugin-transform-private-property-in-object", "next/core-web-vitals"]
+    "extends": [
+      "@babel/plugin-transform-private-property-in-object",
+      "next/core-web-vitals"
+    ]
   },
   "browserslist": {
     "production": [

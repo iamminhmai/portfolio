@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { BrowserRouter as Router, HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/Loading";
 import Cursor from "./components/Cursor";
 import NavBar from "./components/Navbar";
@@ -34,5 +34,3 @@ export default function App() {
         </div>
     );
 };
-
-{/* <Route path="/portfolio" element={<Navigate replace to="/" />} /> */}
