@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +14,11 @@ const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
 export default function Contact(props) {
+    console.log("SITE_KEY:", process.env.REACT_APP_RECAPTCHA_SITE_KEY);
+    console.log("SERVICE_ID:", process.env.REACT_APP_EMAILJS_SERVICE_ID);
+    console.log("TEMPLATE_ID:", process.env.REACT_APP_EMAILJS_TEMPLATE_ID);
+    console.log("PUBLIC_KEY:", process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+
     const contactRef = props.contactRef;
     const contactFormRef = useRef();
     const reCAPTCHARef = useRef(null);
@@ -171,13 +176,13 @@ export default function Contact(props) {
                         </Form.Control.Feedback>
                     </Form.Floating>
                     <p id="recaptcha-label" className="recaptcha-label">Please verify you are not a robot <span>&#129302;</span></p>
-                    <ReCAPTCHA 
+                    {/* <ReCAPTCHA 
                         sitekey={SITE_KEY} 
                         className="mb-4 recaptcha" 
                         aria-describedby="recaptcha-label" 
                         onChange={setReCAPTCHA}
                         ref={reCAPTCHARef}
-                    />
+                    /> */}
                     <button type="submit" className="contact-button">
                         <span>Send Message<i className="fa-solid fa-arrow-up"></i></span>
                     </button>
