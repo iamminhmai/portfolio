@@ -11,6 +11,17 @@ nav.navbar {
     padding: 16px 0 8px;
 }
 
+.navbar::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background-color: var(--bg);
+    z-index: -1;
+}
+
 .navbar .container-fluid {
     margin: 0;
     padding: 0;
@@ -178,10 +189,23 @@ a.nav-link:hover::after {
 }
 
 /* Media Queries */
+@media (max-width: 992px) {
+    nav.navbar {
+        margin: 5px auto;
+    }
+
+    .navbar::before {
+        height: 105px;
+    }
+}
 
 @media (max-width: 576px) {
     nav.navbar {
         margin: 0 auto;
+    }
+
+    .navbar::before {
+        height: 100px;
     }
 
     .navbar.navbar-expanded {

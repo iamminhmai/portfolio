@@ -101,12 +101,12 @@
 }
 
 .about .frontend-wrapper .icon {
-    transform: translateX(calc(160px * 5));
+    transform: translateX(calc(170px * 5));
     animation: scroll-left 30s linear infinite;
 }
 
 .about .backend-wrapper .icon {
-    transform: translateX(-160px);
+    transform: translateX(-170px);
     animation: scroll-right 30s linear infinite;
 }
 
@@ -139,11 +139,11 @@
 
 /* Skill icons */
 @keyframes scroll-left {
-    100% { transform: translateX(-160px); }
+    100% { transform: translateX(-170px); }
 }
 
 @keyframes scroll-right {
-    100% { transform: translateX(calc(160px * 5)); }
+    100% { transform: translateX(calc(170px * 5)); }
 }
 
 @keyframes scroll-left-medium {
@@ -215,6 +215,13 @@
 
     .about .skills-container {
         height: 85px;
+        mask-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 1) 10%,
+            rgba(0, 0, 0, 1) 90%,
+            rgba(0, 0, 0, 0)
+        );
     }
 
     .about .skills-container .icon {

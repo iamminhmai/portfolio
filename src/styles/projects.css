@@ -1,7 +1,5 @@
 .projects {
     padding: 50px 100px;
-    overflow: clip;
-    perspective: 1000;
 }
 
 .projects .projects-description {

@@ -19,7 +19,7 @@ export function PageNotFound() {
                 <h2>Page not found<span className="text-dot">.</span></h2>
             </div>
             <div className="error-message">
-                <p>Whoops, the page you were looking for doesn't exist or you're lost in a perpetual black hole.</p>
+                <p>Oops! The page you're looking for doesn't exist, or you've wandered into the digital void.</p>
             </div>
             <Link reloadDocument to="/">
                 <span>Return Home<i className="fa-solid fa-arrow-up"></i></span>

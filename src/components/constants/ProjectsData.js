@@ -1,5 +1,5 @@
 import coming from "../../assets/images/coming.jpg"
-import retirement from "../../assets/images/retirement.png"
+import retirement from "../../assets/images/retirement.jpg"
 import foodie from "../../assets/images/foodie.jpg"
 import studify from "../../assets/images/studify.jpg"
 

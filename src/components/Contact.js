@@ -170,7 +170,7 @@ export default function Contact(props) {
                             Please provide a message
                         </Form.Control.Feedback>
                     </Form.Floating>
-                    <p id="recaptcha-label" className="recaptcha-label">Please verify you are not a robot <span>&#129302;</span></p>
+                    <p id="recaptcha-label" className="recaptcha-label">Please verify you are not a robot.</p>
                     <ReCAPTCHA 
                         sitekey={SITE_KEY} 
                         className="mb-4 recaptcha" 
