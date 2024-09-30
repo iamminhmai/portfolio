@@ -161,6 +161,18 @@ h2::after {
     }
 }
 
+/* Small laptops */
+@media (min-width: 993px) and (max-width: 1320px) {
+    .hero, .about, .contact, .projects {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .projects-container {
+        gap: 15px;
+    }
+}
+
 /* Tablet devices */
 @media (max-width: 992px) {
     .about, .projects {
@@ -190,5 +202,4 @@ h2::after {
     .contact {
         width: 85%;
     }
-
 }
