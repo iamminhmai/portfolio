@@ -20,7 +20,7 @@ export default function Hero(props) {
         <section ref={heroRef} id="hero" className="hero">
             <div className="hero-title-container">
                 <h1>Hi, I am <strong>Minh Mai</strong><span className="text-dot">.</span></h1>
-                <p>Full Stack Developer</p>
+                <p>Software Developer</p>
             </div>
             <div className="hero-button-container">
                 <a className="hero-button resume-button" href={`${process.env.PUBLIC_URL}/minh-resume.pdf`} target="_blank" rel="noopener noreferrer">

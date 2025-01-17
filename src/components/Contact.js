@@ -100,7 +100,7 @@ export default function Contact(props) {
             <div className="contact-container">
                 <div className={`contact-container-mask ${slideRight ? "slide-to-right" : ""}`}></div>
                 <div className="contact-heading">
-                    <h3>Let's talk!</h3>
+                    <h3>Let's chat!</h3>
                     <p>What's on your mind?</p>
                 </div>
                 <Form 
@@ -170,7 +170,7 @@ export default function Contact(props) {
                             Please provide a message
                         </Form.Control.Feedback>
                     </Form.Floating>
-                    <p id="recaptcha-label" className="recaptcha-label">Please verify you are not a robot.</p>
+                    <p id="recaptcha-label" className="recaptcha-label">Are you human?</p>
                     <ReCAPTCHA 
                         sitekey={SITE_KEY} 
                         className="mb-4 recaptcha" 

@@ -9,7 +9,7 @@ const WhoAmI = () => {
             <h3>Who Am I</h3>
             <div className="description-container">
                 <p>
-                    Hello! I'm Minh, a full-stack developer from Seattle with expertise in JavaScript, React, Next.js, and backend technologies like Node.js and Express.js. I'm currently pursuing a Master's degree in Information Management at the University of Washington, specializing in Information Architecture and Artificial Intelligence, which further enhances my experience in building robust web solutions.
+                    Hello! I'm Minh, a software developer from Seattle with expertise in JavaScript, React, Next.js, and backend technologies like Node.js and Express.js. I'm currently pursuing a Master's degree in Information Management at the University of Washington, specializing in Information Architecture and Artificial Intelligence, which further enhances my experience in building robust web solutions.
                 </p>
                 <p>
                     Throughout my career, I've led projects that significantly improved user experiences and operational efficiencies across various sectors, including those enhancing web accessibility for the elderly and revitalizing community engagement for local nonprofits. Outside of coding or studying, you'll likely find me exploring Washington's stunning landscapes through hiking, playing tennis or pickleball with friends, or cozying up with Netflix on a rainy day.

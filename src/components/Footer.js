@@ -8,7 +8,7 @@ export default function Footer() {
                 <SocialMedia instagramGradient="instagram-gradient-2" />
             </div>
             <div className="copyright-container">
-			    <p className="copyright mb-0">&copy; 2024 Minh Mai. Made with lots of<span>&#x2615;</span></p>
+			    <p className="copyright mb-0">&copy; 2025 Minh Mai. Made with lots of<span>&#x2615;</span></p>
             </div>
         </footer>
     )
