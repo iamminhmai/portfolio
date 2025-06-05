@@ -29,12 +29,12 @@ export default function Hero(props) {
                         <i className="fa-solid fa-arrow-up"></i>
                     </span>
                 </a>
-                <a className="hero-button blog-button" href="https://medium.com/@minhmai2304" target="_blank" rel="noopener noreferrer">
+                {/* <a className="hero-button blog-button" href="https://medium.com/@minhmai2304" target="_blank" rel="noopener noreferrer">
                     <span className="button-text">
                         <span className="view-text">View</span>Blog
                         <i className="fa-solid fa-arrow-up"></i>
                     </span>
-                </a>
+                </a> */}
             </div>
             <div className="scroll-container">
                 <span className="scroll-text">
